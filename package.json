@@ -37,5 +37,9 @@
     "esbuild": "^0.28.2",
     "subset-font": "2.9.0",
     "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "gsap": "3.15.0",
+    "swiper": "14.3.0"
   }
 }

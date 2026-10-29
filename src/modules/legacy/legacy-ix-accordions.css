@@ -1,0 +1,143 @@
+/* Legacy IX2 parity CSS, accordions and expand (accordion.ts, expand.ts; X3, X13–X16). Imported by
+   src/live/styles.css only from the batch that removes these IX2
+   interactions in Webflow: while IX2 still runs, leave it out.
+   Keyed on html.w-mod-js, which Webflow's inline head script sets before
+   first paint, so the start states hold from the first frame with no head
+   code change. Timings are IX2's own, per block (easing table in
+   ix-shared.ts). Heights (IX2 "auto") are animated in JS; here only their
+   settled values. */
+
+/* repo-css: js-state — FAQ accordion, IX2 a-4 (open) / a-5 (close). Keyed
+   on webflow.js's Dropdown `w--open` on the toggle and list; the Designer
+   can't style a child by its parent's open state */
+html.w-mod-js .faqs-accordion-list:not(.w--open) {
+  height: 0;
+}
+
+html.w-mod-js .faqs-accordion-answer {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  transition: opacity 400ms linear, transform 240ms ease;
+}
+
+html.w-mod-js .faqs-accordion-list.w--open .faqs-accordion-answer {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 400ms linear 240ms, transform 240ms ease 240ms;
+}
+
+html.w-mod-js .faqs-accordion-icon {
+  background-color: rgb(255, 255, 255);
+  transition: background-color 400ms ease 240ms;
+}
+
+html.w-mod-js .faqs-accordion-toggle.w--open .faqs-accordion-icon {
+  background-color: rgb(0, 46, 117);
+  transition: background-color 400ms ease;
+}
+
+html.w-mod-js .faqs-plus-line {
+  background-color: rgb(0, 46, 117);
+  transition: background-color 400ms ease 240ms;
+}
+
+html.w-mod-js .faqs-accordion-toggle.w--open .faqs-plus-line {
+  background-color: rgb(255, 255, 255);
+  transition: background-color 400ms ease;
+}
+
+html.w-mod-js .faqs-plus-line.vert {
+  transform: rotate(0deg);
+  transition: background-color 400ms ease 240ms, transform 400ms ease;
+}
+
+html.w-mod-js .faqs-accordion-toggle.w--open .faqs-plus-line.vert {
+  transform: rotate(-90deg);
+  transition: background-color 400ms ease, transform 400ms ease;
+}
+
+/* repo-css: js-state — SerWhy accordion, IX2 a-28 / a-29. The list's
+   display:none ⇄ block comes from Webflow (`.w-dropdown-list.w--open`) and
+   accordion.ts holds it during the close */
+html.w-mod-js .serwhy-accordion-content-w {
+  opacity: 0;
+  transition: opacity 240ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+html.w-mod-js .serwhy-accordion-list.w--open .serwhy-accordion-content-w {
+  opacity: 1;
+  transition: opacity 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+html.w-mod-js .serwhy-accordion .icon.small-icon.icon-dropdown-icon {
+  transform: rotate(0deg);
+  transition: transform 500ms linear;
+}
+
+html.w-mod-js .serwhy-accordion-toggle.w--open .icon.small-icon.icon-dropdown-icon {
+  transform: rotate(45deg);
+  transition: transform 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+/* repo-css: js-state — SerIntro accordion, IX2 a-30 / a-31 */
+html.w-mod-js .serintro-accordion-content {
+  opacity: 0;
+  transition: opacity 240ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+html.w-mod-js .serintro-accordion-list.w--open .serintro-accordion-content {
+  opacity: 1;
+  transition: opacity 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+html.w-mod-js .serintro-accordion .icon.small-icon.icon-dropdown-icon {
+  transform: rotate(0deg);
+  transition: transform 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+html.w-mod-js .serintro-accordion-toggle.w--open .icon.small-icon.icon-dropdown-icon {
+  transform: rotate(45deg);
+}
+
+/* repo-css: js-state — Main Service accordion, IX2 a-32 / a-33 */
+html.w-mod-js .service-accordion-content-w {
+  opacity: 0;
+  transition: opacity 320ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+html.w-mod-js .service-accordion-list.w--open .service-accordion-content-w {
+  opacity: 1;
+  transition: opacity 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+html.w-mod-js .service-accordion .icon.small-icon {
+  transform: rotate(0deg);
+  transition: transform 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+html.w-mod-js .service-accordion-toggle.w--open .icon.small-icon {
+  transform: rotate(45deg);
+}
+
+/* repo-css: js-state — expandable text, IX2 a-34 / a-35; `is-open` is
+   toggled by expand.ts on the button and its `.expand-info-content-w` */
+html.w-mod-js .expand-info-content-w:not(.is-open) {
+  height: 0;
+}
+
+html.w-mod-js .expand-info-content {
+  opacity: 0;
+  transition: opacity 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+html.w-mod-js .expand-info-content-w.is-open .expand-info-content {
+  opacity: 1;
+}
+
+html.w-mod-js .expand-info-button.is-open .expand-menu-text {
+  display: none;
+}
+
+html.w-mod-js .expand-info-button.is-open .collapse-menu-text {
+  display: inline;
+}

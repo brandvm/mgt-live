@@ -1,0 +1,60 @@
+/* Legacy parity CSS for src/modules/legacy/ (reveal, hero-slideshow).
+   Ported as-is from the live site's head code and Home footer code;
+   CODE-MIGRATION C5 and C12. */
+
+/* repo-css: js-state — `.animated` is added by legacy/reveal.ts (C5); the
+   hidden start state must wait for it, so it can't be a Designer style */
+.animated-item {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.animated-item.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* repo-css: canvas-preview — the live rule sat in head code, which the
+   Designer canvas never loads; keep the items visible there now that the
+   canvas reads this sheet (no script runs to add `.animated`) */
+.wf-design-mode .animated-item,
+.w-editor .animated-item,
+html:not([data-wf-domain]) .animated-item {
+  opacity: 1;
+  transform: none;
+}
+
+/* repo-css: designer-cant — @keyframes and :nth-of-type delays for the
+   home hero cross-fade (C12); `.hero-slide` is added by
+   legacy/hero-slideshow.ts (js-state) */
+.s-home-heroo .s-bg-w img.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: hs 12s infinite ease-in-out;
+}
+
+.s-home-heroo .s-bg-w img.hero-slide:nth-of-type(1) {
+  animation-delay: -1s;
+}
+
+.s-home-heroo .s-bg-w img.hero-slide:nth-of-type(2) {
+  animation-delay: 3s;
+}
+
+.s-home-heroo .s-bg-w img.hero-slide:nth-of-type(3) {
+  animation-delay: 7s;
+}
+
+@keyframes hs {
+  0% { opacity: 0; }
+  8.33% { opacity: 1; }
+  33.33% { opacity: 1; }
+  41.67% { opacity: 0; }
+  100% { opacity: 0; }
+}

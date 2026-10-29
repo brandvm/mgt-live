@@ -50,8 +50,12 @@ published.
     var RELEASE = null; // the release tag, e.g. "1.0.0" — the only version string
     var OWNER = "brandvm"; // the GitHub org or user that owns this repo
     var SITE = "wf-mgt"; // this repo's name
-    var STAG = "https://" + OWNER + ".github.io/" + SITE + "/";
-    var DEV = "http://localhost:3000/";
+    // Which bundle in dist/ this site loads: "live/" = the current live
+    // site's code (src/live/), "" = the 2026 redesign (src/index.ts). Also
+    // in 2a's href below. HANDOFF Decisions 2026-10-29.
+    var BUNDLE = "live/";
+    var STAG = "https://" + OWNER + ".github.io/" + SITE + "/" + BUNDLE;
+    var DEV = "http://localhost:3000/" + BUNDLE;
     // *.canvas.webflow.com is the Designer's custom-code preview: a separate
     // origin, with its own URL flag and localStorage.
     var staging = /\.webflow\.io$|\.canvas\.webflow\.com$/.test(location.hostname);
@@ -62,7 +66,7 @@ published.
       if (staging && !q.has("wfc-dev")) flag = localStorage.getItem("wfc-dev") === "1";
     } catch (e) { /* An explicit URL flag still works without storage. */ }
     var prod = RELEASE
-      ? "https://cdn.jsdelivr.net/gh/" + OWNER + "/" + SITE + "@" + RELEASE + "/dist/"
+      ? "https://cdn.jsdelivr.net/gh/" + OWNER + "/" + SITE + "@" + RELEASE + "/dist/" + BUNDLE
       : STAG;
     if (!staging && !RELEASE)
       console.error("[wfc] RELEASE is not set in head code; serving the staging bundle. Tag a release and set RELEASE before launch.");
@@ -165,7 +169,7 @@ published.
    local-network-access prompt. To see local CSS on the canvas while
    designing, add this link below wfc-css TEMPORARILY, with `pnpm dev`
    running, and remove it before publishing:
-     <link id="wfc-css-dev" rel="stylesheet" href="http://localhost:3000/styles.css" />
+     <link id="wfc-css-dev" rel="stylesheet" href="http://localhost:3000/live/styles.css" />
    While both are live they are ADDITIVE: deleting a rule locally does
    not delete staging's copy of it. Deletions can only be verified
    after a push.
@@ -181,7 +185,7 @@ published.
 <link
   id="wfc-css"
   rel="stylesheet"
-  href="https://brandvm.github.io/wf-mgt/styles.css?v=1"
+  href="https://brandvm.github.io/wf-mgt/live/styles.css?v=1"
 />
 
 <!-- ============================================================

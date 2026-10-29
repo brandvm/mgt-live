@@ -258,6 +258,26 @@ page. Checked at 1440, 820 and 390.
   while the footer fits the window (at 390 × 844 and 1024 × 768 it doesn't,
   and stays a normal footer).
 
+- 2026-10-29 · The current live site moves onto wf-template now, code and
+  interactions (asked for; reverses "nothing is ported" for the live site
+  only, the redesign is unchanged). Parity: nothing a visitor sees changes.
+  Separate bundle `src/live/` → `dist/live/` (loader `BUNDLE = "live/"`);
+  ported modules in `src/modules/legacy/`. C11 global styles move verbatim
+  as `override-webflow` (approved). Webflow batches W1–W5 (plan in
+  CODE-MIGRATION.md), each on the user's go-ahead and "publish".
+- 2026-10-29 · Homepage built in the prototype from Figma 02 · Homepage.
+  Choices made where Figma is silent or uneven: services is Webflow's own
+  Tabs element (no custom module in the repo); Figma's section rhythm
+  (69/59 on services and overview, 64 on locations) is Is Compact (64);
+  How it works
+  keeps the wrapper gap 48 (Figma 64); the logo strips run as a CSS
+  marquee (Figma shows a still strip with faded edges); case studies are a
+  carousel with Figma's arrows (vertical wheel over it scrolls the page:
+  the track is `overflow-y: hidden`, see GOTCHAS); FAQs open and close, all
+  closed at first (review); "Learn more" in the overview opens more text (chevron down in
+  Figma, like the live site's expander); below 767 the hero overlay is
+  stronger so the copy stays readable over the photo.
+
 ## Open decisions
 
 | Item | Now | Options |

@@ -1,0 +1,140 @@
+/* Legacy parity CSS for src/modules/legacy/ (swiper, service-map).
+   Ported as-is from the live site's head code, weblocks.io
+   script-66-529.js and the `.seciton-code` Embed; CODE-MIGRATION C6, C7
+   and C16. The @import must stay first in this file, and this file's own
+   @import in styles.css must sit above every rule there. */
+
+/* repo-css: third-party — Swiper 14.3.0's bundle CSS, which live loads from
+   unpkg on every page (C6). Resolves to node_modules/swiper/swiper-bundle.css */
+@import 'swiper/css/bundle';
+
+/* ── C6 / C7 · testimonials slider ─────────────────────────────── */
+
+/* repo-css: third-party — Swiper pagination bullet styles that
+   script-66-529.js injected into <head> on init (no page has a
+   `.pagination` element, so they paint nothing today; kept for parity) */
+.swiper-pagination-bullet {
+  background: #fff;
+  margin-right: 8px;
+  transition: 0.2s;
+}
+.swiper-pagination-bullet:hover {
+  opacity: 0.7;
+}
+.swiper-pagination-bullet-active:hover {
+  opacity: 1;
+}
+.swiper-pagination-fraction {
+  font-size: 16px;
+}
+
+/* repo-css: js-state — transitions for the inline hover styles legacy/swiper.ts
+   sets on slides (injected on init by script-66-529.js; no page has these
+   classes today) */
+.slide-image {
+  transition: transform 0.2s;
+}
+.slide-content {
+  transition: opacity 0.2s;
+}
+
+/* ── C16 · service map card ───────────────────────────────────── */
+
+/* repo-css: override-webflow — verbatim from the `.seciton-code` Embed
+   <style> (embeds.json 022443a20ef3), which loads after webflow.css and
+   overrides the Designer's own .cm-card / .cm-land / .cm-hl / .cm-pill
+   styles exactly as these do. NEEDS APPROVAL + a GOTCHAS.md entry, or move
+   these values into the Designer and delete this block. */
+.cm-card {
+  position: relative;
+  overflow: hidden;
+  color: #e6ecf6;
+}
+.cm-land,
+.cm-hl {
+  position: absolute;
+  inset: 0;
+}
+.cm-land {
+  background: currentColor;
+}
+.cm-pill {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 100vw;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #002e75;
+  transition:
+    background-color 0.4s cubic-bezier(0.64, 0.05, 0, 1),
+    color 0.4s cubic-bezier(0.64, 0.05, 0, 1);
+}
+.cm-pill:focus-visible {
+  outline: 2px solid #002e75;
+  outline-offset: 3px;
+}
+
+/* repo-css: js-state — legacy/service-map.ts sizes and transforms
+   `.cm-layer` from its top-left corner, adds `.is-flying` during a flight
+   and toggles `.is-on` on the highlight and pills */
+.cm-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+}
+.cm-layer.is-flying {
+  will-change: transform;
+}
+.cm-hl {
+  background: #002e75;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.7s cubic-bezier(0.64, 0.05, 0, 1),
+    visibility 0s linear 0.7s;
+}
+.cm-hl.is-on {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+.cm-pill.is-on {
+  background: #002e75;
+  color: #fff;
+}
+
+/* repo-css: designer-cant — CSS masks (map land and region highlights) */
+.cm-land {
+  -webkit-mask: url('https://cdn.prod.website-files.com/658c5919dffd45bc022c9153/6aa439d0eba73bc848189710_Map-flat.svg') no-repeat 0 0 / 100% 100%;
+  mask: url('https://cdn.prod.website-files.com/658c5919dffd45bc022c9153/6aa439d0eba73bc848189710_Map-flat.svg') no-repeat 0 0 / 100% 100%;
+}
+.cm-hl.is-canada {
+  -webkit-mask: url('https://cdn.prod.website-files.com/658c5919dffd45bc022c9153/6aa439cf66161994f97241ef_0b14676f0f2f4de83fa75a685f9604ed_highlight-canada.svg') no-repeat 0 0 / 100% 100%;
+  mask: url('https://cdn.prod.website-files.com/658c5919dffd45bc022c9153/6aa439cf66161994f97241ef_0b14676f0f2f4de83fa75a685f9604ed_highlight-canada.svg') no-repeat 0 0 / 100% 100%;
+}
+.cm-hl.is-usa {
+  -webkit-mask: url('https://cdn.prod.website-files.com/658c5919dffd45bc022c9153/6aa439cfbcc0692a3b80a7e5_highlight-usa.svg') no-repeat 0 0 / 100% 100%;
+  mask: url('https://cdn.prod.website-files.com/658c5919dffd45bc022c9153/6aa439cfbcc0692a3b80a7e5_highlight-usa.svg') no-repeat 0 0 / 100% 100%;
+}
+
+/* repo-css: designer-cant — a 560px breakpoint (Webflow's are 479/767) and
+   a prefers-reduced-motion query */
+@media (max-width: 560px) {
+  .cm-card {
+    aspect-ratio: 1/1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cm-hl,
+  .cm-pill {
+    transition: none !important;
+  }
+}

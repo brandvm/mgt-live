@@ -7,6 +7,13 @@ settings:
 importers:
 
   .:
+    dependencies:
+      gsap:
+        specifier: 3.15.0
+        version: 3.15.0
+      swiper:
+        specifier: 14.3.0
+        version: 14.3.0
     devDependencies:
       '@playwright/test':
         specifier: 1.63.0
@@ -322,6 +329,9 @@ packages:
   fontverter@2.0.0:
     resolution: {integrity: sha512-DFVX5hvXuhi1Jven1tbpebYTCT9XYnvx6/Z+HFUPb7ZRMCW+pj2clU9VMhoTPgWKPhAs7JJDSk3CW1jNUvKCZQ==}
 
+  gsap@3.15.0:
+    resolution: {integrity: sha512-dMW4CWBTUK1AEEDeZc1g4xpPGIrSf9fJF960qbTZmN/QwZIWY5wgliS6JWl9/25fpTGJrMRtSjGtOmPnfjZB+A==}
+
   harfbuzzjs@1.6.3:
     resolution: {integrity: sha512-R5Mfo1UUvQmZJmtScP7fBLKYKnYu82ZdtFT7WbQYeGb3Ut5PR3xfFCJ5/FjbcW5SAfb9cqCSny/KNjp+NJBx0w==}
 
@@ -344,6 +354,10 @@ packages:
 
   subset-font@2.9.0:
     resolution: {integrity: sha512-WJulQeFwbewrXIGcLJbSZFWI44fHW8gNRuPzLywfDL8w38IPRbN1JFxwG76aoohw9kcFdvjVIn2QmID1iy119A==}
+
+  swiper@14.3.0:
+    resolution: {integrity: sha512-qw0Xv1+sylM8KCQxWxV2iYAK2G6XjFGPZ/8F1baEsY8DK4A3sTnLx6jUJ0G71rDbVQ05JHMWkcWmJ5NvlxZO0w==}
+    engines: {node: '>= 4.7.0'}
 
   typescript@7.0.2:
     resolution: {integrity: sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==}
@@ -543,6 +557,8 @@ snapshots:
       wawoff2: 2.0.1
       woff2sfnt-sfnt2woff: 1.0.0
 
+  gsap@3.15.0: {}
+
   harfbuzzjs@1.6.3: {}
 
   p-limit@3.1.0:
@@ -562,6 +578,8 @@ snapshots:
       fontverter: 2.0.0
       harfbuzzjs: 1.6.3
       p-limit: 3.1.0
+
+  swiper@14.3.0: {}
 
   typescript@7.0.2:
     optionalDependencies:

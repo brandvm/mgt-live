@@ -1,0 +1,15 @@
+/* Legacy IX2 parity CSS, scroll motion (title-reveal.ts; X5). Imported by
+   src/live/styles.css only from the batch that removes a-8 in Webflow:
+   while IX2 still runs, leave it out. Keyed on html.w-mod-js, which
+   Webflow's inline head script sets before first paint, so the start state
+   holds from the first frame (IX2 published it as inline styles). The
+   marquee and the before/after wipe need no CSS. */
+
+/* repo-css: js-state — section title reveal, IX2 a-8: the start state
+   (y 24px, opacity 0) until title-reveal.ts adds `.is-inview` and plays the
+   rise. No `transition` here: it would replace the button's own hover
+   transitions from the Designer, which IX2 never touched. */
+html.w-mod-js .c-title-w:not(.is-inview) :is(.c-title-label, .c-title-heading, .c-sub-title, .primary-button) {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+}

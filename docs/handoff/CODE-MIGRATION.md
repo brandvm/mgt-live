@@ -1,8 +1,11 @@
 # Live site code and interactions (reference)
 
 What the live site runs today: every piece of custom code and every Webflow
-interaction (IX2, IX3). **Nothing here is ported** (decided 2026-10-29): the
-2026 redesign builds its own behaviour in this repo. Use this list to make
+interaction (IX2, IX3). **Update 2026-10-29:** the live site moves onto
+wf-template as it is (HANDOFF Decisions): its code is ported to
+`src/modules/legacy/` and ships in the separate live bundle (`src/live/` →
+`dist/live/`), in batches W1–W5 below. The 2026 redesign still builds its
+own behaviour; nothing here goes into its bundle. Use this list to make
 sure the new site still does what it must (tracking, consent, forms, schema,
 canonicals) and to know what each piece was for. The Plan column is a note
 for that, not a task; Status is not used.
@@ -90,3 +93,50 @@ settled page.
 - The illow banner script did not download from the capture script (status
   0); it loads in a browser. Not needed locally: the local copy switches it off.
 
+
+## Migration batches
+
+Each batch: repo ready → [Person] Webflow backup and the steps → publish to
+**staging only** → checks on staging → [Person] confirms nothing else is
+pending → types **publish** → live → same checks with `--live`. Parity is
+checked first against the harness `migration-copy/` (port 5966: the
+captured pages with the batch's old code removed and the loader pointed at
+a local `dist/`; `node scripts/swap-code.mjs` there, then from wf-mgt
+`node ../migration-copy/scripts/parity-local.mjs`).
+
+| Batch | Contents | State |
+| --- | --- | --- |
+| W1 code | C4, C5, C6+C7, C9–C11, C12, C13 (dead, dropped), C14, C16; C17, C18, C24 dropped | repo ready; local parity 2026-10-29 on all 30 harness pages × 3 widths: no difference outside noise (logo marquee position; the two `.seciton-code` Embed wrappers gone, zero-size; HubSpot Embed without `w-script`; icon glyphs, because live-copy lacks the icon fonts — live and harness both 16px). Not in Webflow |
+| W2 click IX | X3, X13–X15 accordions, X16 expand, X9 video cover (a-19); X2/X4 hovers | modules written, off |
+| W3 scroll IX | X5 title reveal (a-8), X1 logo marquee, X30 before/after (IX3) | modules written, off |
+| W4 nav IX | X6, X7, X10 | module written, off |
+| W5 cleanup | X8 (unpublished page), X11 (no markup), X12 (no markup): delete; C15 Finsweet v1 → v2 attributes | not started |
+
+Stays in Webflow: C1 GTM, C2 illow, C3 Ahrefs, C8 HubSpot app, C15
+Finsweet (until W5), C19 canonicals, C21–C23 JSON-LD / noindex, C25.
+
+### W1 steps in Webflow (all manual: the API can't edit site or page custom code or Embed contents)
+
+Paste from `loader.html` (with `RELEASE` set to the W1 tag, never `null`
+on a custom domain). Verbatim old code is in `ROLLBACK.md`.
+
+1. **Site settings › Custom code › Head:** keep illow, GTM and the Ahrefs
+   meta; delete the Swiper `<link>`, the gclid `<script>` and the
+   `.animated-item` `<style>`; add loader piece 1 at the end.
+2. **Site settings › Custom code › Footer:** keep the GTM `<noscript>`;
+   delete the Swiper, weblocks `library.js` and `script-66-529.js` tags and
+   the `.animated-item` observer; add loader piece 3.
+3. **Home › Page settings › Custom code:** delete the BeerSlider tags (head
+   and footer), the second `.animated-item` observer and the hero slideshow
+   script.
+4. **Global Embed** (`.global-embed`, on 279 pages): replace its content
+   with loader piece 2a (the `<link id="wfc-css">`), and add a second Embed
+   directly after it with piece 2b.
+5. **/contact-us and /offers › `.hubspot-embed`:** replace the content with
+   `<div data-hubspot-portal="44243593" data-hubspot-form="07684124-bff7-4657-8d8e-f485d95e757b" data-hubspot-region="na1"></div>`.
+6. **Services component › `.s-locations-section`:** delete both
+   `.seciton-code` Embeds (style and script).
+7. Publish to staging only.
+
+Not changed in W1 (later batches): every IX2/IX3 interaction, Finsweet on
+`/blog`, page settings.

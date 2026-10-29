@@ -17,11 +17,13 @@ function loader(release) {
       .filter(link => /id="wfc-css/.test(link)).join('\n'),
   };
 }
-const js = readFileSync(new URL('../dist/index.js', import.meta.url), 'utf8');
-const css = readFileSync(new URL('../dist/styles.css', import.meta.url), 'utf8');
-const stage = `https://${org}.github.io/${repo}/`;
-const local = 'http://localhost:3000/';
-const release = `https://cdn.jsdelivr.net/gh/${org}/${repo}@1.0.0/dist/`;
+// The bundle folder in dist/ ("" for the main bundle), read back like SITE.
+const bundle = source.match(/var BUNDLE = "([^"]*)"/)?.[1] ?? '';
+const js = readFileSync(new URL(`../dist/${bundle}index.js`, import.meta.url), 'utf8');
+const css = readFileSync(new URL(`../dist/${bundle}styles.css`, import.meta.url), 'utf8');
+const stage = `https://${org}.github.io/${repo}/${bundle}`;
+const local = `http://localhost:3000/${bundle}`;
+const release = `https://cdn.jsdelivr.net/gh/${org}/${repo}@1.0.0/dist/${bundle}`;
 
 async function setup(page, {
   url = 'https://example.webflow.io/',

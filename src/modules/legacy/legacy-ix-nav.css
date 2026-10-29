@@ -1,0 +1,53 @@
+/* Legacy IX2 parity CSS, navigation (legacy-nav.ts; X6, X7, X10). Imported by
+   src/live/styles.css only from the batch that removes these IX2
+   interactions in Webflow: while IX2 still runs, leave it out.
+   Keyed on html.w-mod-js, which Webflow's inline head script sets before
+   first paint, so the start states hold from the first frame with no head
+   code change. Timings are IX2's own, per block (easing table in
+   ix-shared.ts). Heights (IX2 "auto") are animated in JS; here only their
+   settled values. */
+
+/* repo-css: js-state — navbar dropdowns, IX2 a-13 / a-14. IX2 forced
+   display:none on every list when closed and block when open, over the
+   `.hide` / `.open` / `.right` / `.service` variants (flex or none), so the
+   state wins over them here too; legacy-nav.ts holds display during the
+   close and animates the height */
+html.w-mod-js .navbar-drop > .nav-drop-list:not(.w--open) {
+  display: none;
+}
+
+html.w-mod-js .navbar-drop > .nav-drop-list.w--open {
+  display: block;
+}
+
+html.w-mod-js .navbar-drop .s-wrapper.sw-nav-drop-content {
+  opacity: 0;
+  transition: opacity 740ms cubic-bezier(0.64, 0.05, 0, 1);
+}
+
+html.w-mod-js .navbar-drop > .nav-drop-list.w--open .s-wrapper.sw-nav-drop-content {
+  opacity: 1;
+  transition: opacity 740ms cubic-bezier(0.64, 0.05, 0, 1) 240ms;
+}
+
+/* repo-css: js-state — mobile menu slide, IX2 a-15 / a-16 (≤ 991px only,
+   IX2 breakpoints medium/small/tiny); `is-open` from legacy-nav.ts */
+@media screen and (max-width: 991px) {
+  html.w-mod-js .navbar-menu {
+    transition: transform 400ms ease-in-out;
+  }
+
+  html.w-mod-js .navbar-menu.is-open {
+    transform: translate3d(-101%, 0, 0);
+  }
+}
+
+/* repo-css: js-state — /offers menu drawer, IX2 a-24 / a-25; closed is
+   Webflow's own translate(101%) */
+html.w-mod-js .l-menu-drawer {
+  transition: transform 400ms ease-in-out;
+}
+
+html.w-mod-js .l-menu-drawer.is-open {
+  transform: translate3d(0, 0, 0);
+}

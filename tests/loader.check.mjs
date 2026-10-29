@@ -19,9 +19,11 @@ const org = source.match(/var OWNER = "([^"]+)"/)[1];
 const scripts = [...source.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((m) => m[1]);
 const cssLink = source.match(/<link\b[^>]*id="wfc-css"[^>]*>/)?.[0];
 const [head, embed, footer] = scripts;
-const stage = `https://${org}.github.io/${repo}/`;
-const local = 'http://localhost:3000/';
-const release = (v) => `https://cdn.jsdelivr.net/gh/${org}/${repo}@${v}/dist/`;
+// The bundle folder in dist/ ("" for the main bundle), read back like SITE.
+const bundle = source.match(/var BUNDLE = "([^"]*)"/)?.[1] ?? '';
+const stage = `https://${org}.github.io/${repo}/${bundle}`;
+const local = `http://localhost:3000/${bundle}`;
+const release = (v) => `https://cdn.jsdelivr.net/gh/${org}/${repo}@${v}/dist/${bundle}`;
 
 // A page with the loader pieces in it. `pieces` picks which ones are
 // installed (a missing head code is the "config missing" case).

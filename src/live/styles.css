@@ -1,0 +1,28 @@
+/* The LIVE site's stylesheet (dist/live.css) — the current
+   michaelsglobaltrading.com, moved onto wf-template with nothing a visitor
+   can see changing (HANDOFF Decisions 2026-10-29, live migration). The 2026
+   redesign's sheet is src/styles.css; nothing here is shared with it, so
+   neither can change the other. When the redesign launches, the loader
+   switches BUNDLE back to the main entry and src/live/ is deleted.
+
+   Same policy as src/styles.css (AGENTS.md): every rule, or the header
+   above a group, carries a "repo-css:" tag. Imports first (CSS requires
+   it), in the order the live site loaded them. */
+
+/* repo-css: third-party — the icon fonts the live site took from unpkg and
+   cdnjs (C9, C10), same versions, woff2 only, licences next to them. */
+@import "./vendor/phosphor/regular.css";
+@import "./vendor/phosphor/bold.css";
+@import "./vendor/phosphor/fill.css";
+@import "./vendor/fontawesome/css/all.min.css";
+
+@import "./global-styles.css";
+@import "../modules/legacy/legacy-a.css";
+@import "../modules/legacy/legacy-b.css";
+
+/* repo-css: js-state — the head bootstrap in loader.html adds .is-loading
+   before first paint and src/live/index.ts removes it (as src/styles.css
+   §04 does for the main bundle). */
+html.is-loading {
+  overflow: hidden;
+}

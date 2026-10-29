@@ -51,7 +51,7 @@ collected from client repos into those files.
 - Symptom: the local copy of `/blog` logged 12 failed requests for `@finsweet/attributes@2/dist/chunk-*.js`; every other page was clean.
 - Cause: Finsweet Attributes v2 is an ES module that imports its features by relative path when they're needed, so they're in no `<script src>` the capture reads.
 - Fix: `scripts/capture-live.mjs` follows relative `import`/`from` specifiers in every captured script until nothing new turns up (47 chunks on this site).
-- Status: fixed (uncommitted)
+- Status: fixed (setup commit)
 - Found by: claude
 
 ### 2026-10-29 · Library classes in new-classes.css fail the style guide check
@@ -71,3 +71,48 @@ collected from client repos into those files.
 - Fix: opening or closing the whole menu is one motion: the bar's colour eases while the menu and any open view fade together (Web Animations, 250ms), and the view is reset only after the fade, with no transitions (`.is-instant` on G | Nav W, repo CSS `js-state`). Nav Menu Is Open and Nav Mega Panel are pinned to the Base colour mode, so they stay white while the bar turns navy (first try made the switch instant: no animation at all, rejected in review). The cleanup also runs on a timer: animations don't advance in a background tab. Nav Mega Panel is `pointer-events: none` unless Is Open, and `overflow: clip` so focusing a link in a sliding view can't scroll it sideways.
 - Status: fixed (prototype)
 - Found by: claude
+
+### 2026-10-29 · The template's base CSS would restyle the live site
+- Area: css
+- Scope: template-candidate
+- Symptom: moving the live site's code onto the template, `src/styles.css` (already set up for the 2026 redesign: body-size scaling from 1440, margin resets, `img {display:block}`, `a {text-decoration:none}`) would have shipped to the live pages and changed how they look.
+- Cause: the template has one bundle; a live-site migration and a redesign in the same repo need two stylesheets that never meet.
+- Fix: a second entry, `src/live/` → `dist/live/index.js` + `dist/live/styles.css` (build.mjs), and `var BUNDLE = "live/"` in loader.html (also in 2a's href); the tests read BUNDLE like SITE. At the redesign's launch BUNDLE becomes "" and `src/live/` + `src/modules/legacy/` are deleted. Template: support a bundle folder in the loader.
+- Status: fixed (W1 commit)
+- Found by: claude
+
+### 2026-10-29 · Live global styles in repo CSS (override-webflow, approved)
+- Area: css
+- Scope: project
+- Symptom: the live site's "Brand Vision – Global Styles" Embed (C11) sets `:root` font-size and reads Webflow `--_colors---*` variables, both forbidden in repo CSS without approval.
+- Cause: parity release: the rules move verbatim so nothing a visitor sees changes.
+- Fix: approved by the user 2026-10-29. `src/live/global-styles.css`, tagged `override-webflow`, untouched. A renamed Webflow colour variable breaks these rules silently until they move to the Designer (later batches).
+- Status: open
+- Found by: claude
+
+### 2026-10-29 · Breakpoint values in proposed.css did nothing on :root
+- Area: css
+- Scope: template-candidate
+- Symptom: P2 (smaller Typography Role sizes below 991) was written as `:root { --_typography-role---size--h1: … }` in media queries; the variable changed on `:root` but the H1 stayed 60px at 390.
+- Cause: Typography Role switches modes on the Body tag style (`variableModes` per breakpoint), so the generated `webflow.css` declares every role variable again on `body`, which beats anything inherited from `:root`. Each breakpoint's body rule also re-sets the roles a smaller breakpoint block leaves out.
+- Fix: a proposed change to a breakpoint mode is set on `body`, with every changed role in every breakpoint block (`prototype/src/css/proposed.css` P2). Template: say so in the proposed.css header.
+- Status: fixed (prototype)
+- Found by: claude
+
+### 2026-10-29 · A style guide component row that wraps a whole section squeezes the component
+- Area: designer
+- Scope: template-candidate
+- Symptom: the Before After row on the style guide showed the section's copy and no photos.
+- Cause: the `sg:start` block wrapped the whole Section, so the specimen was a two-column Split inside the narrow specimen frame; the copy took all the width and the flexible media column shrank to nothing.
+- Fix: a `components` block wraps the component only; a block that needs the Section (its combos) is a `page-sections` row, shown at half size.
+- Status: fixed (prototype)
+- Found by: claude
+
+### 2026-10-29 · A sideways carousel caught the page's vertical wheel under Lenis
+- Area: js
+- Scope: template-candidate
+- Symptom: scrolling the page with the mouse over the case-study carousel hung there: the wheel went into the carousel instead of the page.
+- Cause: Lenis runs with `allowNestedScroll: true` and hands the wheel to any element under the pointer that can scroll that way. The track had `overflow-x: auto`, which makes `overflow-y` compute to `auto` too; with fluid scaling its content can be a pixel taller than the box, so Lenis saw a vertically scrollable element.
+- Fix: the track (and the Service Tabs Menu, which scrolls sideways below 991) is `overflow-x: auto` + `overflow-y: hidden`. Vertical wheel scrolls the page; horizontal wheel, swipe and the arrows move the carousel. No `data-lenis-prevent*` on it.
+- Status: fixed (prototype)
+- Found by: human
