@@ -116,3 +116,22 @@ collected from client repos into those files.
 - Fix: the track (and the Service Tabs Menu, which scrolls sideways below 991) is `overflow-x: auto` + `overflow-y: hidden`. Vertical wheel scrolls the page; horizontal wheel, swipe and the arrows move the carousel. No `data-lenis-prevent*` on it.
 - Status: fixed (prototype)
 - Found by: human
+
+### 2026-10-29 · The Embed editor reformats pasted loader code
+- Area: loader
+- Scope: template-candidate
+- Symptom: `pnpm wf:install` reported "Embed 2b differs from loader.html" right after a correct paste.
+- Cause: the Designer's code editor (its Format action) rewrote the script: double quotes to single, a one-line function body split over three lines. Same behaviour, different text.
+- Fix: compare the served 2b with the paste file ignoring quote style before re-pasting; the code is fine. Template: let install.mjs normalise quotes and whitespace inside scripts.
+- Status: open (template)
+- Found by: claude
+
+### 2026-10-29 · Staging screenshots can't isolate a batch when live is older
+- Area: release
+- Scope: template-candidate
+- Symptom: after W1, `wf:baseline compare` staging vs the live baselines showed 3–55 % pixel changes on every page.
+- Cause: the live domain was last published Oct 13, webflow.io since then; staging carries those edits (new phone number, content) plus the batch, and scroll reveals, slideshow frames and lazy map tiles differ per capture.
+- Fix: take staging baselines right before a batch, not only live ones; for W1, checked behaviour and computed sizes on live vs staging instead (identical).
+- Status: open (template)
+- Found by: claude
+

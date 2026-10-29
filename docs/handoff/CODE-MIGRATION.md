@@ -106,7 +106,7 @@ a local `dist/`; `node scripts/swap-code.mjs` there, then from wf-mgt
 
 | Batch | Contents | State |
 | --- | --- | --- |
-| W1 code | C4, C5, C6+C7, C9–C11, C12, C13 (dead, dropped), C14, C16; C17, C18, C24 dropped | repo ready; local parity 2026-10-29 on all 30 harness pages × 3 widths: no difference outside noise (logo marquee position; the two `.seciton-code` Embed wrappers gone, zero-size; HubSpot Embed without `w-script`; icon glyphs, because live-copy lacks the icon fonts — live and harness both 16px). Not in Webflow |
+| W1 code | C4, C5, C6+C7, C9–C11, C12, C13 (dead, dropped), C14, C16; C17, C18, C24 dropped | repo ready; local parity 2026-10-29 on all 30 harness pages × 3 widths: no difference outside noise (logo marquee position; the two `.seciton-code` Embed wrappers gone, zero-size; HubSpot Embed without `w-script`; icon glyphs, because live-copy lacks the icon fonts — live and harness both 16px). On staging 2026-10-29 22:08 (steps 1–3, 6 and the G | Components wrapper through the MCP; Embed code and step 5 by hand). Staging vs live, 11 key pages at 1440: bundle loads from `live/`, scroll lock released, Swiper 1/1, hero 3 slides, HubSpot form 1398 px on /contact-us and /offers as live, service map, gclid stored, same root size; no new console errors; hero, logo and map sizes identical. Screenshot diffs against the live baselines are capture timing plus content published to webflow.io since Oct 13 (e.g. the phone number), not W1. Not live; no release tag yet |
 | W2 click IX | X3, X13–X15 accordions, X16 expand, X9 video cover (a-19); X2/X4 hovers | modules written, off |
 | W3 scroll IX | X5 title reveal (a-8), X1 logo marquee, X30 before/after (IX3) | modules written, off |
 | W4 nav IX | X6, X7, X10 | module written, off |
@@ -115,7 +115,12 @@ a local `dist/`; `node scripts/swap-code.mjs` there, then from wf-mgt
 Stays in Webflow: C1 GTM, C2 illow, C3 Ahrefs, C8 HubSpot app, C15
 Finsweet (until W5), C19 canonicals, C21–C23 JSON-LD / noindex, C25.
 
-### W1 steps in Webflow (all manual: the API can't edit site or page custom code or Embed contents)
+### W1 steps in Webflow
+
+Steps 1–3 (site and page custom code) and 6 (deleting Embeds) can go
+through the MCP (`data_scripts_tool` › `set_site_freeform_code` /
+`set_page_freeform_code`; `data_element_tool` › `remove_element`). Steps 4
+and 5 change an Embed's code, which the API can't: Designer only.
 
 Paste from `loader.html` (with `RELEASE` set to the W1 tag, never `null`
 on a custom domain). Verbatim old code is in `ROLLBACK.md`.
@@ -129,9 +134,14 @@ on a custom domain). Verbatim old code is in `ROLLBACK.md`.
 3. **Home › Page settings › Custom code:** delete the BeerSlider tags (head
    and footer), the second `.animated-item` observer and the hero slideshow
    script.
-4. **Global Embed** (`.global-embed`, on 279 pages): replace its content
-   with loader piece 2a (the `<link id="wfc-css">`), and add a second Embed
-   directly after it with piece 2b.
+4. **G | Components** (component, group Global; class G | Components:
+   fixed, 0×0, hidden, `aria-hidden="true"`; on all 33 pages that had the
+   old Global Embed, first in the body; built through the MCP
+   2026-10-29). Open it once and paste loader piece 2a into **Embed 2a ·
+   loader CSS (link)** and piece 2b into **Embed 2b · loader script**
+   (Embed code is Designer-only). The old **Global Embed** component
+   (icons + C11 styles) now has 0 instances and stays registered for
+   rollback: put it back first in the body and remove G | Components.
 5. **/contact-us and /offers › `.hubspot-embed`:** replace the content with
    `<div data-hubspot-portal="44243593" data-hubspot-form="07684124-bff7-4657-8d8e-f485d95e757b" data-hubspot-region="na1"></div>`.
 6. **Services component › `.s-locations-section`:** delete both
