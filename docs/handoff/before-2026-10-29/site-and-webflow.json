@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-29",
+  "hosting": {"cdn": "Cloudflare (Webflow)", "http": "HTTP/2, 103 Early Hints", "homeCache": "cf-cache-status HIT", "ttfbHomeS": [0.126, 0.056, 0.065, 0.050, 0.192], "homeHtmlTransferredKB": 45, "tls": "Google Trust Services WE1, expires 2027-01-26"},
+  "securityHeaders": {"strict-transport-security": "max-age=31536000 (no includeSubDomains, no preload)", "content-security-policy": "missing", "x-frame-options": "missing", "x-content-type-options": "missing", "referrer-policy": "missing", "permissions-policy": "missing"},
+  "redirects": {"http apex": "2 hops -> https://www", "https apex": "1 hop", "http www": "1 hop", "trailing slash": "301 to no slash", "uppercase /About-Us": "404 (no redirect)", "/index.html": "200, duplicate of home, no canonical on either", "unknown page": "404"},
+  "favicon.ico": "404 (a favicon is set via <link>; /favicon.ico itself missing)",
+  "robots.txt": "allows everything; Sitemap line listed twice",
+  "sitemap": {"urls": 278, "withLastmod": 278, "byFolder": {"/blog": 242, "/services": 17, "/service-areas": 10, "/auctions": 2, "other": 7}},
+  "webflow": {
+    "lastPublishedStaging": "2026-10-29T17:10:55Z", "lastPublishedCustomDomain": "2026-10-13T19:29:30Z",
+    "pagesTotal": 40, "draftPages": ["/static-template-slug-1751471520892 (Services copy)", "/design/style-guide", "/infographics"],
+    "pagesNoMetaDescription": ["/offers", "/privacy-policy", "/thank-you"],
+    "pagesNoOgImage": "every static page except Home; Home's og:image is an SVG (Webclip.svg), which Facebook/LinkedIn/X don't render",
+    "weakMeta": {"/auctions": "description 'Our auctions and liquidations.' (31 chars)"},
+    "cmsTemplatesSeo": {"Blogs": "title=name, description=blog-description, og:image=thumbnail", "Service Areas": "seo-title / seo-meta-description fields, og:image=hero", "Auctions": "title=name + option, description field (empty on the one item)"},
+    "cms": {"Blogs": 247, "Sub-Services": 170, "FAQs": 117, "Testimonials": 50, "Customers": 13, "Service Areas": 10, "Blog Tags": 8, "Blog Categories": 6, "Infographics": 2, "Auctions": 1},
+    "assets": "see webflow-assets.json: 256 assets, 82.1 MB, 252 of 253 images without asset alt text, 24 over 1 MB",
+    "dataCollection": false, "locales": "English only"
+  }
+}

@@ -1,0 +1,208 @@
+$ node .claude/skills/webflow-build/scripts/a11y.mjs / /about-us /contact-us /offers /faq /blog /blog/3-reasons-to-sell-assets-with-a-liquidation-auction /our-services /services/commercial-asset-liquidation /service-areas/toronto /auctions /auctions/ingram-micro /privacy-policy --live --all-widths
+
+== /  1440×900  3 rules fail  (25 pass, 2 to check by hand)
+  critical aria-required-children: Certain ARIA roles must contain particular children (1)
+           #swiper-wrapper-25d1f5a08ed3a1047
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (10)
+           .ham-visual-w > .ham-stats > .ham-stat-item:nth-child(1) > .ham-stat-main > .ham-stat-item-label > .text-b-xxxs.u-muted
+           .ham-visual-w > .ham-stats > .ham-stat-item:nth-child(2) > .ham-stat-main > .ham-stat-item-label > .text-b-xxxs.u-muted
+           .ham-visual-w > .ham-stats > .ham-stat-item:nth-child(3) > .ham-stat-main > .ham-stat-item-label > .text-b-xxxs.u-muted
+  serious  link-name: Links must have discernible text (2)
+           .hal-logo-w.w-inline-block:nth-child(1)
+           .hal-logo-w.w-inline-block:nth-child(2)
+
+== /  390×844  4 rules fail  (26 pass, 2 to check by hand)
+  critical aria-required-children: Certain ARIA roles must contain particular children (1)
+           #swiper-wrapper-ce010d8b9103bd513c
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (10)
+           .ham-visual-w > .ham-stats > .ham-stat-item:nth-child(1) > .ham-stat-main > .ham-stat-item-label > .text-b-xxxs.u-muted
+           .ham-visual-w > .ham-stats > .ham-stat-item:nth-child(2) > .ham-stat-main > .ham-stat-item-label > .text-b-xxxs.u-muted
+           .ham-visual-w > .ham-stats > .ham-stat-item:nth-child(3) > .ham-stat-main > .ham-stat-item-label > .text-b-xxxs.u-muted
+  serious  link-name: Links must have discernible text (2)
+           .hal-logo-w.w-inline-block:nth-child(1)
+           .hal-logo-w.w-inline-block:nth-child(2)
+  serious  target-size: All touch targets must be 24px large, or leave sufficient space (5)
+           #w-dropdown-toggle-3
+           #w-dropdown-toggle-4
+           #w-dropdown-toggle-5
+
+== /about-us  1440×900  2 rules fail  (26 pass, 2 to check by hand)
+  critical aria-required-children: Certain ARIA roles must contain particular children (1)
+           #swiper-wrapper-1010457edc8e620207
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (8)
+           .proud-about-content-para:nth-child(2)
+           .proud-about-content-para:nth-child(2) > a
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+
+== /about-us  390×844  2 rules fail  (26 pass, 2 to check by hand)
+  critical aria-required-children: Certain ARIA roles must contain particular children (1)
+           #swiper-wrapper-964c104e19a8ecc89
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (8)
+           .proud-about-content-para:nth-child(2)
+           .proud-about-content-para:nth-child(2) > a
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+
+== /contact-us  1440×900  1 rules fail  (25 pass, 2 to check by hand)
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (10)
+           .contact-form-title-para
+           .other-ways-of-contact-item:nth-child(1) > .other-contact-label
+           .other-ways-of-contact-item:nth-child(2) > .other-contact-label
+
+== /contact-us  390×844  1 rules fail  (25 pass, 2 to check by hand)
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (10)
+           .contact-form-title-para
+           .other-ways-of-contact-item:nth-child(1) > .other-contact-label
+           .other-ways-of-contact-item:nth-child(2) > .other-contact-label
+
+== /offers  1440×900  3 rules fail  (27 pass, 3 to check by hand)
+  critical aria-required-children: Certain ARIA roles must contain particular children (1)
+           #swiper-wrapper-ebbeea5d4812baf0
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (15)
+           #w-dropdown-toggle-0 > div:nth-child(1)
+           #w-dropdown-toggle-1 > div:nth-child(1)
+           #w-dropdown-toggle-2 > div:nth-child(1)
+  serious  link-name: Links must have discernible text (1)
+           .navbar-brand-link
+
+== /offers  390×844  3 rules fail  (28 pass, 3 to check by hand)
+  critical aria-required-children: Certain ARIA roles must contain particular children (1)
+           #swiper-wrapper-d9a7be866e5714d1
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (15)
+           #w-dropdown-toggle-0 > div:nth-child(1)
+           #w-dropdown-toggle-1 > div:nth-child(1)
+           #w-dropdown-toggle-2 > div:nth-child(1)
+  serious  link-name: Links must have discernible text (1)
+           .navbar-brand-link
+
+== /faq  1440×900  1 rules fail  (25 pass, 2 to check by hand)
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (6)
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(2) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(3) > .label-overline-2.u-muted-50
+
+== /faq  390×844  1 rules fail  (25 pass, 2 to check by hand)
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (6)
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(2) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(3) > .label-overline-2.u-muted-50
+
+== /blog  1440×900  3 rules fail  (27 pass, 2 to check by hand)
+  critical aria-required-attr: Required ARIA attributes must be provided (1)
+           .w-page-count
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (22)
+           .featured-main-info > .blogs-hero-right-date
+           .blogs-hero-right-item.w-dyn-item[role="listitem"]:nth-child(1) > .blogs-hero-right-card > .blogs-hero-right-info-w > .blogs-hero-right-date
+           .blogs-hero-right-item.w-dyn-item[role="listitem"]:nth-child(2) > .blogs-hero-right-card > .blogs-hero-right-info-w > .blogs-hero-right-date
+  critical select-name: Select element must have an accessible name (1)
+           #field
+
+== /blog  390×844  3 rules fail  (27 pass, 2 to check by hand)
+  critical aria-required-attr: Required ARIA attributes must be provided (1)
+           .w-page-count
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (22)
+           .featured-main-info > .blogs-hero-right-date
+           .blogs-hero-right-item.w-dyn-item[role="listitem"]:nth-child(1) > .blogs-hero-right-card > .blogs-hero-right-info-w > .blogs-hero-right-date
+           .blogs-hero-right-item.w-dyn-item[role="listitem"]:nth-child(2) > .blogs-hero-right-card > .blogs-hero-right-info-w > .blogs-hero-right-date
+  critical select-name: Select element must have an accessible name (1)
+           #field
+
+== /blog/3-reasons-to-sell-assets-with-a-liquidation-auction  1440×900  1 rules fail  (27 pass, 2 to check by hand)
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (8)
+           .blogs-hero-right-item.w-dyn-item[role="listitem"]:nth-child(1) > .blogs-hero-right-card.recommended-reading.w-inline-block > .blogs-hero-right-info-w > .blogs-hero-right-date
+           .blogs-hero-right-item.w-dyn-item[role="listitem"]:nth-child(2) > .blogs-hero-right-card.recommended-reading.w-inline-block > .blogs-hero-right-info-w > .blogs-hero-right-date
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+
+== /blog/3-reasons-to-sell-assets-with-a-liquidation-auction  390×844  1 rules fail  (27 pass, 2 to check by hand)
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (6)
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(2) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(3) > .label-overline-2.u-muted-50
+
+== /our-services  1440×900  1 rules fail  (23 pass, 2 to check by hand)
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (6)
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(2) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(3) > .label-overline-2.u-muted-50
+
+== /our-services  390×844  1 rules fail  (23 pass, 2 to check by hand)
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (6)
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(2) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(3) > .label-overline-2.u-muted-50
+
+== /services/commercial-asset-liquidation  1440×900  2 rules fail  (27 pass, 2 to check by hand)
+  critical aria-required-children: Certain ARIA roles must contain particular children (1)
+           #swiper-wrapper-1c4df10cb328e7081
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (6)
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(2) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(3) > .label-overline-2.u-muted-50
+
+== /services/commercial-asset-liquidation  390×844  2 rules fail  (27 pass, 2 to check by hand)
+  critical aria-required-children: Certain ARIA roles must contain particular children (1)
+           #swiper-wrapper-c843207f65bbbe35
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (6)
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(2) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(3) > .label-overline-2.u-muted-50
+
+== /service-areas/toronto  1440×900  3 rules fail  (25 pass, 2 to check by hand)
+  critical aria-required-children: Certain ARIA roles must contain particular children (1)
+           #swiper-wrapper-2e10c8ed17771096a3
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (9)
+           .ham-visual-w > .ham-stats > .ham-stat-item:nth-child(1) > .ham-stat-main > .ham-stat-item-label > .text-b-xxxs.u-muted
+           .ham-visual-w > .ham-stats > .ham-stat-item:nth-child(2) > .ham-stat-main > .ham-stat-item-label > .text-b-xxxs.u-muted
+           .ham-visual-w > .ham-stats > .ham-stat-item:nth-child(3) > .ham-stat-main > .ham-stat-item-label > .text-b-xxxs.u-muted
+  serious  link-name: Links must have discernible text (2)
+           .hal-logo-w.w-inline-block:nth-child(1)
+           .hal-logo-w.w-inline-block:nth-child(2)
+
+== /service-areas/toronto  390×844  3 rules fail  (26 pass, 2 to check by hand)
+  critical aria-required-children: Certain ARIA roles must contain particular children (1)
+           #swiper-wrapper-5974f338dbd56425
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (9)
+           .ham-visual-w > .ham-stats > .ham-stat-item:nth-child(1) > .ham-stat-main > .ham-stat-item-label > .text-b-xxxs.u-muted
+           .ham-visual-w > .ham-stats > .ham-stat-item:nth-child(2) > .ham-stat-main > .ham-stat-item-label > .text-b-xxxs.u-muted
+           .ham-visual-w > .ham-stats > .ham-stat-item:nth-child(3) > .ham-stat-main > .ham-stat-item-label > .text-b-xxxs.u-muted
+  serious  link-name: Links must have discernible text (2)
+           .hal-logo-w.w-inline-block:nth-child(1)
+           .hal-logo-w.w-inline-block:nth-child(2)
+
+== /auctions  1440×900  1 rules fail  (24 pass, 2 to check by hand)
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (7)
+           .auction-card-label
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(2) > .label-overline-2.u-muted-50
+
+== /auctions  390×844  1 rules fail  (25 pass, 2 to check by hand)
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (7)
+           .auction-card-label
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(2) > .label-overline-2.u-muted-50
+
+== /auctions/ingram-micro  1440×900  1 rules fail  (22 pass, 1 to check by hand)
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (7)
+           .auction-card-label
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(2) > .label-overline-2.u-muted-50
+
+== /auctions/ingram-micro  390×844  1 rules fail  (22 pass, 1 to check by hand)
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (7)
+           .auction-card-label
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(2) > .label-overline-2.u-muted-50
+
+== /privacy-policy  1440×900  1 rules fail  (24 pass, 2 to check by hand)
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (6)
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(2) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(3) > .label-overline-2.u-muted-50
+
+== /privacy-policy  390×844  1 rules fail  (25 pass, 2 to check by hand)
+  serious  color-contrast: Elements must meet minimum color contrast ratio thresholds (6)
+           .footer-info-group:nth-child(1) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(2) > .label-overline-2.u-muted-50
+           .footer-info-group:nth-child(3) > .label-overline-2.u-muted-50
+
+47 serious or critical rule failures
+[ELIFECYCLE] Command failed with exit code 1.

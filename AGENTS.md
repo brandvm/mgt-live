@@ -1,4 +1,4 @@
-# <CLIENT> — Webflow custom code
+# MGT — Webflow custom code
 
 Agent instructions for this repository. Codex, Cursor and similar tools read
 this file directly; Claude Code reads it through `CLAUDE.md`. It is the single
@@ -6,16 +6,16 @@ source of agent rules — edit this file, never a copy of it.
 
 ## Project facts
 
-Fill these in when the repo is created from the template (`pnpm new-project`).
+Filled in by `pnpm new-project` on 2026-10-29.
 
-- Client / site: `<CLIENT>`
-- GitHub: `<ORG>/<REPO>`, default branch `master`
-- Webflow site ID: `<SITE_ID>`
-- Webflow MCP server: `webflow-<SLUG>` (`.mcp.json`)
-- Staging site: `https://<SLUG>.webflow.io`
-- Staging bundles: `https://<ORG>.github.io/<REPO>/`
-- Production domain: `<DOMAIN or "not attached yet">`
-- Production release: `<RELEASE in the head snippet, or "none yet">`
+- Client / site: `MGT` (Michaels Global Trading)
+- GitHub: `brandvm/wf-mgt`, default branch `master`
+- Webflow site ID: `658c5919dffd45bc022c9153`
+- Webflow MCP server: `webflow-wf-mgt` (`.mcp.json`)
+- Staging site: `https://wf-mgt.webflow.io`
+- Staging bundles: `https://brandvm.github.io/wf-mgt/`
+- Production domain: `www.michaelsglobaltrading.com` (live; apex `michaelsglobaltrading.com` also attached)
+- Production release: `none yet`
 
 ## Who owns what
 

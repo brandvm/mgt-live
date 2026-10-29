@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "webflow": {
+    "webflow-wf-mgt": {
       "type": "http",
       "url": "https://mcp.webflow.com/mcp"
     }

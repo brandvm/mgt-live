@@ -1,0 +1,579 @@
+{
+  "date": "2026-10-29T20:09:17.927Z",
+  "base": "https://www.michaelsglobaltrading.com",
+  "runs": 3,
+  "pages": {
+    "/": {
+      "mobile": {
+        "runs": 3,
+        "performance": 48,
+        "accessibility": 83,
+        "bestPractices": 75,
+        "seo": 92,
+        "perfRange": [
+          44,
+          50
+        ],
+        "fcp": 9529,
+        "lcp": 26709,
+        "tbt": 345,
+        "cls": 0,
+        "si": 9529,
+        "tti": 27372,
+        "ttfb": 24,
+        "bytesKB": 5175,
+        "requests": 96,
+        "domSize": 2194
+      },
+      "desktop": {
+        "runs": 3,
+        "performance": 90,
+        "accessibility": 87,
+        "bestPractices": 74,
+        "seo": 92,
+        "perfRange": [
+          87,
+          92
+        ],
+        "fcp": 1078,
+        "lcp": 1391,
+        "tbt": 0,
+        "cls": 0.01,
+        "si": 2089,
+        "tti": 1634,
+        "ttfb": 27,
+        "bytesKB": 9571,
+        "requests": 101,
+        "domSize": 2194
+      }
+    },
+    "/about-us": {
+      "mobile": {
+        "runs": 3,
+        "performance": 55,
+        "accessibility": 91,
+        "bestPractices": 75,
+        "seo": 100,
+        "perfRange": [
+          51,
+          56
+        ],
+        "fcp": 4256,
+        "lcp": 15756,
+        "tbt": 275,
+        "cls": 0,
+        "si": 5806,
+        "tti": 15865,
+        "ttfb": 17,
+        "bytesKB": 1795,
+        "requests": 78,
+        "domSize": 1213
+      },
+      "desktop": {
+        "runs": 3,
+        "performance": 93,
+        "accessibility": 91,
+        "bestPractices": 74,
+        "seo": 100,
+        "perfRange": [
+          93,
+          94
+        ],
+        "fcp": 793,
+        "lcp": 1443,
+        "tbt": 0,
+        "cls": 0.072,
+        "si": 1395,
+        "tti": 1459,
+        "ttfb": 18,
+        "bytesKB": 2459,
+        "requests": 87,
+        "domSize": 1213
+      }
+    },
+    "/contact-us": {
+      "mobile": {
+        "runs": 3,
+        "performance": 46,
+        "accessibility": 96,
+        "bestPractices": 75,
+        "seo": 100,
+        "perfRange": [
+          31,
+          47
+        ],
+        "fcp": 13485,
+        "lcp": 19208,
+        "tbt": 380,
+        "cls": 0.001,
+        "si": 13485,
+        "tti": 19645,
+        "ttfb": 28,
+        "bytesKB": 2281,
+        "requests": 100,
+        "domSize": 530
+      },
+      "desktop": {
+        "runs": 3,
+        "performance": 71,
+        "accessibility": 96,
+        "bestPractices": 74,
+        "seo": 100,
+        "perfRange": [
+          69,
+          73
+        ],
+        "fcp": 1179,
+        "lcp": 1540,
+        "tbt": 0,
+        "cls": 0.4,
+        "si": 1540,
+        "tti": 1540,
+        "ttfb": 22,
+        "bytesKB": 2322,
+        "requests": 100,
+        "domSize": 530
+      }
+    },
+    "/offers": {
+      "mobile": {
+        "runs": 3,
+        "performance": 43,
+        "accessibility": 87,
+        "bestPractices": 75,
+        "seo": 92,
+        "perfRange": [
+          42,
+          47
+        ],
+        "fcp": 14635,
+        "lcp": 22730,
+        "tbt": 462,
+        "cls": 0,
+        "si": 14635,
+        "tti": 22991,
+        "ttfb": 22,
+        "bytesKB": 6621,
+        "requests": 114,
+        "domSize": 1362
+      },
+      "desktop": {
+        "runs": 3,
+        "performance": 67,
+        "accessibility": 87,
+        "bestPractices": 74,
+        "seo": 92,
+        "perfRange": [
+          61,
+          70
+        ],
+        "fcp": 1004,
+        "lcp": 1585,
+        "tbt": 0,
+        "cls": 0.59,
+        "si": 1935,
+        "tti": 2340,
+        "ttfb": 19,
+        "bytesKB": 9161,
+        "requests": 120,
+        "domSize": 1362
+      }
+    },
+    "/faq": {
+      "mobile": {
+        "runs": 3,
+        "performance": 48,
+        "accessibility": 96,
+        "bestPractices": 75,
+        "seo": 100,
+        "perfRange": [
+          47,
+          48
+        ],
+        "fcp": 5814,
+        "lcp": 15366,
+        "tbt": 501,
+        "cls": 0,
+        "si": 5814,
+        "tti": 15435,
+        "ttfb": 31,
+        "bytesKB": 1558,
+        "requests": 70,
+        "domSize": 1112
+      },
+      "desktop": {
+        "runs": 3,
+        "performance": 93,
+        "accessibility": 96,
+        "bestPractices": 74,
+        "seo": 100,
+        "perfRange": [
+          93,
+          94
+        ],
+        "fcp": 961,
+        "lcp": 1317,
+        "tbt": 5,
+        "cls": 0.086,
+        "si": 1186,
+        "tti": 1333,
+        "ttfb": 17,
+        "bytesKB": 1590,
+        "requests": 70,
+        "domSize": 1112
+      }
+    },
+    "/blog": {
+      "mobile": {
+        "runs": 3,
+        "performance": 46,
+        "accessibility": 88,
+        "bestPractices": 75,
+        "seo": 100,
+        "perfRange": [
+          46,
+          52
+        ],
+        "fcp": 9061,
+        "lcp": 20140,
+        "tbt": 273,
+        "cls": 0.131,
+        "si": 9061,
+        "tti": 21477,
+        "ttfb": 16,
+        "bytesKB": 3058,
+        "requests": 137,
+        "domSize": 715
+      },
+      "desktop": {
+        "runs": 3,
+        "performance": 72,
+        "accessibility": 88,
+        "bestPractices": 74,
+        "seo": 100,
+        "perfRange": [
+          68,
+          73
+        ],
+        "fcp": 1187,
+        "lcp": 4665,
+        "tbt": 0,
+        "cls": 0.022,
+        "si": 1962,
+        "tti": 4739,
+        "ttfb": 21,
+        "bytesKB": 6120,
+        "requests": 143,
+        "domSize": 715
+      }
+    },
+    "/blog/3-reasons-to-sell-assets-with-a-liquidation-auction": {
+      "mobile": {
+        "runs": 3,
+        "performance": 51,
+        "accessibility": 95,
+        "bestPractices": 75,
+        "seo": 100,
+        "perfRange": [
+          48,
+          59
+        ],
+        "fcp": 5804,
+        "lcp": 13871,
+        "tbt": 399,
+        "cls": 0,
+        "si": 5804,
+        "tti": 14957,
+        "ttfb": 47,
+        "bytesKB": 1581,
+        "requests": 70,
+        "domSize": 661
+      },
+      "desktop": {
+        "runs": 3,
+        "performance": 96,
+        "accessibility": 95,
+        "bestPractices": 74,
+        "seo": 100,
+        "perfRange": [
+          89,
+          96
+        ],
+        "fcp": 974,
+        "lcp": 1123,
+        "tbt": 0,
+        "cls": 0.005,
+        "si": 1316,
+        "tti": 1123,
+        "ttfb": 26,
+        "bytesKB": 4213,
+        "requests": 73,
+        "domSize": 661
+      }
+    },
+    "/our-services": {
+      "mobile": {
+        "runs": 3,
+        "performance": 59,
+        "accessibility": 96,
+        "bestPractices": 75,
+        "seo": 100,
+        "perfRange": [
+          51,
+          75
+        ],
+        "fcp": 2789,
+        "lcp": 4959,
+        "tbt": 384,
+        "cls": 0.001,
+        "si": 4094,
+        "tti": 14642,
+        "ttfb": 22,
+        "bytesKB": 1702,
+        "requests": 75,
+        "domSize": 585
+      },
+      "desktop": {
+        "runs": 3,
+        "performance": 94,
+        "accessibility": 96,
+        "bestPractices": 74,
+        "seo": 100,
+        "perfRange": [
+          94,
+          94
+        ],
+        "fcp": 754,
+        "lcp": 1416,
+        "tbt": 0,
+        "cls": 0.001,
+        "si": 1350,
+        "tti": 1418,
+        "ttfb": 22,
+        "bytesKB": 1905,
+        "requests": 75,
+        "domSize": 585
+      }
+    },
+    "/services/commercial-asset-liquidation": {
+      "mobile": {
+        "runs": 3,
+        "performance": 73,
+        "accessibility": 90,
+        "bestPractices": 75,
+        "seo": 100,
+        "perfRange": [
+          53,
+          82
+        ],
+        "fcp": 3400,
+        "lcp": 3683,
+        "tbt": 232,
+        "cls": 0.001,
+        "si": 6224,
+        "tti": 19383,
+        "ttfb": 25,
+        "bytesKB": 3130,
+        "requests": 85,
+        "domSize": 1494
+      },
+      "desktop": {
+        "runs": 3,
+        "performance": 97,
+        "accessibility": 90,
+        "bestPractices": 74,
+        "seo": 100,
+        "perfRange": [
+          88,
+          98
+        ],
+        "fcp": 859,
+        "lcp": 1049,
+        "tbt": 0,
+        "cls": 0.013,
+        "si": 1201,
+        "tti": 1049,
+        "ttfb": 23,
+        "bytesKB": 7980,
+        "requests": 87,
+        "domSize": 1494
+      }
+    },
+    "/service-areas/toronto": {
+      "mobile": {
+        "runs": 3,
+        "performance": 53,
+        "accessibility": 87,
+        "bestPractices": 75,
+        "seo": 92,
+        "perfRange": [
+          52,
+          60
+        ],
+        "fcp": 9205,
+        "lcp": 17906,
+        "tbt": 228,
+        "cls": 0,
+        "si": 9205,
+        "tti": 20776,
+        "ttfb": 22,
+        "bytesKB": 3881,
+        "requests": 88,
+        "domSize": 1845
+      },
+      "desktop": {
+        "runs": 3,
+        "performance": 96,
+        "accessibility": 87,
+        "bestPractices": 74,
+        "seo": 92,
+        "perfRange": [
+          93,
+          97
+        ],
+        "fcp": 763,
+        "lcp": 1186,
+        "tbt": 0,
+        "cls": 0.01,
+        "si": 1483,
+        "tti": 1186,
+        "ttfb": 19,
+        "bytesKB": 8929,
+        "requests": 96,
+        "domSize": 1845
+      }
+    },
+    "/auctions": {
+      "mobile": {
+        "runs": 3,
+        "performance": 50,
+        "accessibility": 96,
+        "bestPractices": 75,
+        "seo": 100,
+        "perfRange": [
+          49,
+          51
+        ],
+        "fcp": 9106,
+        "lcp": 15497,
+        "tbt": 314,
+        "cls": 0,
+        "si": 9106,
+        "tti": 15561,
+        "ttfb": 45,
+        "bytesKB": 1569,
+        "requests": 72,
+        "domSize": 527
+      },
+      "desktop": {
+        "runs": 3,
+        "performance": 95,
+        "accessibility": 96,
+        "bestPractices": 74,
+        "seo": 100,
+        "perfRange": [
+          94,
+          95
+        ],
+        "fcp": 1046,
+        "lcp": 1198,
+        "tbt": 0,
+        "cls": 0.001,
+        "si": 1272,
+        "tti": 1201,
+        "ttfb": 24,
+        "bytesKB": 1601,
+        "requests": 72,
+        "domSize": 527
+      }
+    },
+    "/auctions/ingram-micro": {
+      "mobile": {
+        "runs": 3,
+        "performance": 57,
+        "accessibility": 96,
+        "bestPractices": 75,
+        "seo": 92,
+        "perfRange": [
+          55,
+          62
+        ],
+        "fcp": 4506,
+        "lcp": 6417,
+        "tbt": 336,
+        "cls": 0,
+        "si": 5158,
+        "tti": 15152,
+        "ttfb": 30,
+        "bytesKB": 1674,
+        "requests": 71,
+        "domSize": 555
+      },
+      "desktop": {
+        "runs": 3,
+        "performance": 92,
+        "accessibility": 96,
+        "bestPractices": 74,
+        "seo": 92,
+        "perfRange": [
+          87,
+          93
+        ],
+        "fcp": 987,
+        "lcp": 1483,
+        "tbt": 0,
+        "cls": 0.076,
+        "si": 1380,
+        "tti": 1483,
+        "ttfb": 18,
+        "bytesKB": 1674,
+        "requests": 71,
+        "domSize": 555
+      }
+    },
+    "/privacy-policy": {
+      "mobile": {
+        "runs": 3,
+        "performance": 53,
+        "accessibility": 96,
+        "bestPractices": 75,
+        "seo": 92,
+        "perfRange": [
+          50,
+          68
+        ],
+        "fcp": 5845,
+        "lcp": 15228,
+        "tbt": 360,
+        "cls": 0.001,
+        "si": 5845,
+        "tti": 15260,
+        "ttfb": 23,
+        "bytesKB": 1550,
+        "requests": 70,
+        "domSize": 586
+      },
+      "desktop": {
+        "runs": 3,
+        "performance": 95,
+        "accessibility": 96,
+        "bestPractices": 74,
+        "seo": 92,
+        "perfRange": [
+          94,
+          95
+        ],
+        "fcp": 1079,
+        "lcp": 1223,
+        "tbt": 0,
+        "cls": 0.001,
+        "si": 1185,
+        "tti": 1223,
+        "ttfb": 19,
+        "bytesKB": 1583,
+        "requests": 70,
+        "domSize": 586
+      }
+    }
+  }
+}
