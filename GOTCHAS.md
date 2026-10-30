@@ -154,3 +154,21 @@ collected from client repos into those files.
 - Status: worked around (restore + Designer linking, 2026-10-30)
 - Found by: claude
 
+
+### 2026-10-30 · The MCP can't put anything into an empty component slot
+- Area: mcp
+- Scope: template-candidate
+- Symptom: moving the old content wrappers into G | Page W's G | Main slot on 28 pages: `move_element` with the slot id, the instance id + `append`, the page id + slot id, or the slot as the anchor's `prop` all failed ("Anchor element not found" or "Cannot append an element to a component instance").
+- Cause: an empty slot has no element the API can anchor on; `append` onto an instance is refused. Once a slot holds something, `before`/`after`/`append` on that content works (used to re-wrap Page Wrapper inside three slots).
+- Fix: the MCP moves the wrapper out of the old shell so it sits loose in the body and deletes the old nav/footer; a person drags it into the slot (one move per page). Don't run MCP writes while that person works: concurrent Designer edits change element ids and the calls fail with "not found".
+- Status: open (template)
+- Found by: claude
+
+### 2026-10-30 · Dropping a wrapper into a slot lost its padding and left old footers behind
+- Area: designer
+- Scope: project
+- Symptom: after the content went into the G | Main slot, staging vs live: Thank You, the Auctions and Blog templates sat 80px higher; six pages had a second footer; Get a Quote (outside the shell) had lost its Page Content and hero section and its sections were out of order.
+- Cause: the sections were dragged in without their Page Wrapper (`padding-top: 80px`); the old Global Footer inside the wrapper came along; Get a Quote was edited by accident. Main Wrapper (width 100% only) is safe to drop.
+- Fix: Page Wrapper rebuilt inside the three slots, the extra footers removed, Get a Quote restored to live's structure (Page Content, `section#Hero-Section.s-page-hero`, live section order). Check every page against live (section order, positions, nav box, footer count and text) at 1440/820/390 before any publish to live.
+- Status: fixed (staging 2026-10-30 17:57)
+- Found by: claude

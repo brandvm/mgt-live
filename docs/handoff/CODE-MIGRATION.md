@@ -111,6 +111,7 @@ a local `dist/`; `node scripts/swap-code.mjs` there, then from wf-mgt
 | W3 scroll IX | X5 title reveal (a-8), X1 logo marquee, X30 before/after (IX3) | modules written, off |
 | W4 nav IX | X6, X7, X10 | module written, off |
 | W5 cleanup | X8 (unpublished page), X11 (no markup), X12 (no markup): delete; C15 Finsweet v1 → v2 attributes | not started |
+| S1 shell | Template page shell on the live pages, no visual change: component **G \| Page W** (group Global: skip link → `#main`, G \| Nav W with the Navbar, G \| Main W > `main#main.g-main` with slot G \| Main, G \| Footer W with the Footer; prop **Footer Text** feeds the footer, CMS-conditional on the Service Areas template for `/service-areas/united-states`; variant **Nav In Flow** = G \| Nav W static, on Blog, Privacy, Thank You and the Blog and Auctions templates). Classes Global Navigation W → G \| Nav W, Global Footer W → G \| Footer W. On 29 pages; `/offers` keeps its own landing shell; drafts and unpublished templates untouched | staging 2026-10-30 17:57: 29 pages × 1440/820/390 match live (section order and positions, nav box, footer count and text; `/blog` list height varies with Finsweet loading), one `<main>`, W1 behaviour unchanged. Not live: the user publishes |
 
 Stays in Webflow: C1 GTM, C2 illow, C3 Ahrefs, C8 HubSpot app, C15
 Finsweet (until W5), C19 canonicals, C21–C23 JSON-LD / noindex, C25.
