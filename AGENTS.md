@@ -15,8 +15,7 @@ Filled in by `pnpm new-project` on 2026-10-29.
 - Staging site: `https://wf-mgt.webflow.io`
 - Staging bundles: `https://brandvm.github.io/wf-mgt/`
 - Production domain: `www.michaelsglobaltrading.com` (live; apex `michaelsglobaltrading.com` also attached)
-- Production release: `1.1.0` (tag `v1.1.0`, live bundle `dist/live/`: W1 code + interactions W2–W4), live since 2026-10-30 19:18 UTC (1.0.0 from 16:10)
-- Next release: `1.2.0` (tag `v1.2.0`, commit 23234dc: + Finsweet v2 List for `/blog`, W5/C15), set in the head code and published to staging 2026-10-30; live with the next live publish (the /blog attribute changes need it)
+- Production release: `1.2.0` (tag `v1.2.0`, live bundle `dist/live/`: W1 code + interactions W2–W4 + Finsweet v2 List on `/blog`, W5/C15), live since 2026-10-30 ~20:20 UTC (1.1.0 from 19:18, 1.0.0 from 16:10)
 
 ## Who owns what
 
