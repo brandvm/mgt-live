@@ -4,6 +4,7 @@
 // its launch the loader switches BUNDLE and this folder and
 // src/modules/legacy/ are deleted. Keep this file a manifest, like that one.
 import { initEnvironmentSwitcher } from '../modules/environment-switcher';
+import { initFinsweet } from '../modules/finsweet';
 import { initAccordions } from '../modules/legacy/accordion';
 import { initBeforeAfter } from '../modules/legacy/before-after';
 import { initExpand } from '../modules/legacy/expand';
@@ -53,6 +54,10 @@ function boot() {
   run('before-after', initBeforeAfter);
   // W4 nav (+ legacy-ix-nav.css).
   run('legacy-nav', initLegacyNav);
+  // W5: Finsweet Attributes v2 List on /blog (search, sort, load more;
+  // C15), bundled instead of the three CDN tags in the page head. Last, so
+  // attributes set by the modules above are seen.
+  run('finsweet', initFinsweet);
 }
 
 if (document.readyState === 'loading') {

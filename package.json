@@ -12,6 +12,7 @@
     "new-project": "node scripts/new-project.mjs",
     "update-skills": "node scripts/update-skills.mjs",
     "phosphor": "node scripts/phosphor.mjs",
+    "finsweet": "node scripts/finsweet.mjs",
     "capture:live": "node scripts/capture-live.mjs",
     "wf:compare": "node .claude/skills/webflow-build/scripts/compare.mjs",
     "wf:pass": "node .claude/skills/webflow-build/scripts/pass.mjs",
@@ -39,6 +40,7 @@
     "typescript": "^7.0.2"
   },
   "dependencies": {
+    "@finsweet/attributes": "2.7.1",
     "gsap": "3.15.0",
     "swiper": "14.3.0"
   }
