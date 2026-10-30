@@ -306,6 +306,7 @@ page. Checked at 1440, 820 and 390.
   (20.6) follow the system. Blog at tablet (768–991) shows two posts.
 
 - 2026-10-30 · The 2026 nav goes into this Webflow site now, sandboxed (user: "This site, prefixed"; a new site was recommended). Only on `/design/*` pages, never on live pages. Class names that already exist on the live site get an `N26 | ` prefix (G | Nav W → N26 | Nav W, Button, Icon, Nav Drop Link; later Section, S Wrapper, D6, Icon Color as they are needed), renamed back at launch; the other 2026 classes keep their names. No 2026 tag styles (they would restyle all live pages): the design pages' content sits in a wrapper with N26 | Body (2026 body type and colours; 16px, as the prototype renders). The nav module and its repo CSS ship in the live bundle (`src/modules/nav.ts`, `nav.css`, `src/live/design-pages.css`), inert without `[data-nav]`. Component variants are combos for now (Icon · 12/14/20 → N26 | Icon Is Size 12/14/20; Button Color · Light → Is Light; Button Size · Icon Lead → Is Icon Lead). Icons come from the live bundle's Phosphor (regular, bold, fill); no CDN, no icon Embed. "Body Fuild" (`.body-fuild`, on 36 live pages: font-size 1em of the fluid root, line-height 1.56em, colour black) stays: deleting it changes those pages. The `/design/*` pages reach the live domain with the next live publish (noindex).
+- 2026-10-30 · Mega menus match the live nav (user: "match live; pages that don't exist yet disabled with a soon badge"): Resources = Blog & Insights, Case Studies (no link, greyed: N26 | Nav Drop Link Is Disabled, `aria-disabled`, Badge "Soon"), FAQs; Auctions & Liquidations dropped. Services CTA phone = live's 647-496-6362 (Figma 647-317-0860). The Service Areas stats card links to the Google reviews (new tab), as live. Service Areas list in the CMS default order, as live. Any later menu item whose page doesn't exist yet gets the same disabled + Soon treatment.
 
 ## Open decisions
 
@@ -322,7 +323,7 @@ page. Checked at 1440, 820 and 390.
 | Mega menus | not in Figma: full-width, after the live site's (Services categories + CTA band; areas + stats card; resources + latest posts), in the 2026 system; edited on `/design/mega-menus` | designer reviews; the live site is reference and can change |
 | Nav open state | not in Figma: the bar turns white with a faint line and a navy logo (`mgt-logo-navy.svg`, the wordmark recoloured), dark overlay behind | designer confirms |
 | Nav below 1280 | not in Figma: white full-height menu, each mega menu slides in over it with Back (small desktops, tablets, phones) | designer designs it (or approves) |
-| Resources menu | Blog & Insights, Case Studies, FAQs, Auctions & Liquidations + the two newest posts | confirm the list |
+| Resources menu | decided 2026-10-30: as live (Blog & Insights, FAQs) + Case Studies (Soon) + the two newest posts | — |
 | Nav and footer details off by a hair | Figma nav button padding 25.7 (system 24); link text #F1F6F9 and bar line 12% (built: white, 16% like the footer dividers); caret circle 6% (built: 8%) | accept, or make Figma match the system |
 | Fluid scaling frame | template default 1680 (1440–1680); design frame is 1440 | set ideal 1440 and the range |
 | Case studies | new: template, listing, three section options | CMS fields and which option |
