@@ -15,7 +15,7 @@ Filled in by `pnpm new-project` on 2026-10-29.
 - Staging site: `https://wf-mgt.webflow.io`
 - Staging bundles: `https://brandvm.github.io/wf-mgt/`
 - Production domain: `www.michaelsglobaltrading.com` (live; apex `michaelsglobaltrading.com` also attached)
-- Production release: `none yet`
+- Production release: `1.0.0` (tag `v1.0.0`, live bundle `dist/live/`), live since 2026-10-30 16:10 UTC
 
 ## Who owns what
 

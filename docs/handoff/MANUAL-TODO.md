@@ -56,4 +56,4 @@ again at each gate, so the steps are found early and not at the end:
 
 | ID | Where (page › element or class) | Breakpoint | Set | Why the API can't | Done |
 | --- | --- | --- | --- | --- | --- |
-| A | | Desktop | | | ☐ |
+| A | All pages › Body (tag style) › Variable modes › Layout | Tablet, Mobile Landscape, Mobile | Layout = Tablet at Tablet, Mobile Landscape at Mobile Landscape, Mobile at Mobile (Typography Role is already automatic there) | `set_style_variable_mode` on `body` at a breakpoint fails with "[Conflict] … style block store" (2026-10-30), and breakpoint modes don't read back through the API. **On hold (user, 2026-10-30): don't link Layout to Body yet**; decide when the 2026 classes go in (Body, or per class) | — |

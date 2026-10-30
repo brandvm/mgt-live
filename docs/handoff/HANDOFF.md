@@ -22,11 +22,11 @@ prototype (`prototype/`, `pnpm dev`, http://127.0.0.1:5964 ›
 Shell, nav and footer built 2026-10-29 (`partials/nav.html`,
 `partials/footer.html`), waiting for review. Homepage built 2026-10-29
 (`prototype/index.html`, every section of Figma 02 · Homepage, compared at
-1440, checked at 820 and 390), waiting for review; the variable changes it
-needs are P1–P3 in `prototype/src/css/proposed.css`. Next: the other
-pages. How the
-2026 system goes into Webflow is decided once the homepage is done (see
-Open decisions). Nothing from the live site is ported: its copy in
+1440, checked at 820 and 390), in review; the variable changes it needs, P1–P3 in
+`prototype/src/css/proposed.css`, were approved 2026-10-29. Next: the other
+pages, one at a time. The whole site is prototyped locally before any
+2026 work goes into Webflow (user, 2026-10-29); how it goes in is decided
+then (see Open decisions). Nothing from the live site is ported: its copy in
 `live-copy/` and the inventory in [CODE-MIGRATION.md](CODE-MIGRATION.md) are
 reference only.
 
@@ -101,7 +101,8 @@ page. Checked at 1440, 820 and 390.
 - Phosphor fill weight is used (phone icon): the repo bundle needs
   `pnpm phosphor regular fill`.
 - Approval state: **style guide approved** by the user, 2026-10-29
-  (prototype, `/design/style-guide`).
+  (prototype, `/design/style-guide`); homepage variable changes **P1–P3
+  approved** 2026-10-29 (in `proposed.css`, made in Webflow at build time).
 - Homepage classes (2026-10-29, in the snapshot's `styles.json`; each has
   its style guide row: the page's sections are `sg:start` blocks, four
   components (Before After, Carousel › Card, Faq Grid, Cta Band) and eight
@@ -132,6 +133,20 @@ page. Checked at 1440, 820 and 390.
     Vertical), Faq Answer; Cta Band (Dark mode; + Copy, Actions).
   - Service Tabs Menu (review): 8 between the tab links (Spacing/8), down
     the side and in the sideways row below 991; Figma has them touching.
+    Service Tab Icon (review): white with a 1px Border/Subtle inset line
+    (Figma: tint, too faint on the Surface panel), navy fill on the open
+    tab; Service Tab hover: Paper 64 (half white), lighter than the open
+    tab's white.
+  - Logo Marquee (review): 20 above and below the logos (12 below 767).
+  - S Bg Media Is Parallax (review, hero photo): moves down at a third of
+    the scroll speed as the hero scrolls away; CSS scroll-driven animation
+    (repo CSS, `view-timeline` on S Bg), still where unsupported and under
+    reduced motion.
+  - Post Item (review): the Collection Item around each blog card on the
+    homepage (flex column; the Card inside fills it, Card `flex-grow: 1`).
+    Its Last item state is hidden at Tablet (768–991) and shown again at
+    Mobile Landscape, so the tablet shows two posts and none sits alone on
+    a row; desktop and phones show all three.
   - FAQ grid (review): three columns from 1440, two below, one below
     767; every closed box is the same height through Faq Question's
     min-height per breakpoint (7.39em ≥1440, 8.67em 992–1439, 9.94em
@@ -146,8 +161,8 @@ page. Checked at 1440, 820 and 390.
     and edge mask, a tab's icon on the Current tab, carousel scroll-snap
     and hidden scrollbar, `:disabled` arrows, the before/after cut
     (`--before-after`), the Collapse fold and the FAQ toggle's open state.
-- Proposed variable changes for the homepage (`proposed.css`, for
-  approval): **P1** headings navy (All H1–H6 colour Text/Accent; Figma's
+- Variable changes for the homepage (`proposed.css`, approved
+  2026-10-29, made in Webflow at build time): **P1** headings navy (All H1–H6 colour Text/Accent; Figma's
   headings are all navy, body copy ink); **P2** smaller type below 991
   (every Typography Role breakpoint mode held the desktop size, so H1 60
   and H2 45 reached the phone; adds Size/28 and Size/32); **P3** Section
@@ -168,7 +183,7 @@ page. Checked at 1440, 820 and 390.
 | Component | Used on | Props | Behaviour inside |
 | --- | --- | --- | --- |
 | G | Nav W | every page | — | `nav` module. Figma 1689:1539 for the bar. Holds Nav Overlay, Nav Bg and one shared Nav Mega Panel with three views; while a menu is open G | Nav W Is Open puts the bar in the Base theme (white, faint line, navy logo) |
-| C | Mega Services | in G | Nav W's panel; `/design/mega-menus` | — | four categories (tint headers, icons) and a full-width CTA band (Dark theme) |
+| C | Mega Services | in G | Nav W's panel; `/design/mega-menus` (its style guide rows are Page sections, a half-size 1440 screen: the menus are 1280 wide) | — | four categories (tint headers, icons) and a full-width CTA band (Dark theme) |
 | C | Mega Areas | in G | Nav W's panel; `/design/mega-menus` | — | ten areas in two columns and a photo card with three stats (photo: live site's, stand-in) |
 | C | Mega Resources | in G | Nav W's panel; `/design/mega-menus` | — | four links and the two newest posts: a Collection List of Blogs, limit 2, in Webflow (stand-ins here) |
 | G | Footer W | every page | — | `[data-year]`, `footer-reveal` (Is Reveal; G | Main sits above it). Figma "Footer — site" 1738:2924 |
@@ -182,12 +197,12 @@ page. Checked at 1440, 820 and 390.
 
 | Module | `data-*` hooks | What it does |
 | --- | --- | --- |
-| nav | `data-nav`, `-overlay`, `-logo`, `-menu`, `-toggle`, `-toggle-icon`, `-drop-toggle=<key>`, `-caret`, `-panel`, `-view=<key>`, `-back` | one shared mega panel: content slides between the menus and its height eases to fit; the bar turns light and the overlay dims the page while one is open; click, keyboard, hover; <1280 the menu panel with each mega menu sliding in over it (Back); opening or closing the whole menu is one 250ms motion (the bar's colour eases while the menu and open view fade; Nav Menu Is Open and Nav Mega Panel stay in the Base mode); the bar is fixed and hides on scroll down past two bar heights, back on scroll up (8px tolerance; never while a menu is open or focus is in it; G | Nav W Is Hidden); Escape, overlay or outside click closes; safe triangle on hover |
+| nav | `data-nav`, `-overlay`, `-logo`, `-menu`, `-toggle`, `-toggle-icon`, `-drop-toggle=<key>`, `-caret`, `-panel`, `-view=<key>`, `-back` | one shared mega panel: content slides between the menus and its height eases to fit; the bar turns light and the overlay dims the page while one is open; click, keyboard, hover; <1280 the menu panel with each mega menu sliding in over it (Back); opening or closing the whole menu is one 250ms motion (the bar's colour eases while the menu and open view fade; they stay white: Nav Menu Is Open and Nav Mega W are in the Base mode, Nav Mega Panel, Nav Mega View and Nav Mega Back use Neutral/White, Ink, Brand/Navy and Neutral/Border directly); the bar is fixed once the module runs (G | Nav W stays absolute, conventions §1; the module adds Is Fixed, so the canvas and style guide keep it in place) and hides on scroll down past two bar heights, back on scroll up (8px tolerance; never while a menu is open or focus is in it; G | Nav W Is Hidden); Escape, overlay or outside click closes; safe triangle on hover |
 | smooth-scroll (recipe) | — | Lenis on GSAP's ticker; off under reduced motion; the nav stops it while its menu panel is open |
 | anchor-scroll (recipe) | — | same-page anchors glide through Lenis and clear any sticky bar |
 | transition (recipe barba) | `data-barba="wrapper"` on G \| Page W, `data-barba="container"` + `data-barba-namespace` on G \| Main W (footer inside), `data-barba-prevent` | page transitions: Osmo-style cross-fade (old page out 0.5s power1.in, new page fixed on top in 0.75s power1.inOut, its H1 rising 25% with expo.out from 0.3s), then the recipe's head, current-link, Webflow, focus and page-view sync; `/design` pages load in full; instant under reduced motion |
 | pages (recipe barba) | — | page modules (year, footer-reveal, forms, style guide) start on every page and are torn down when it leaves; nav, Lenis and anchor-scroll are global |
-| footer-reveal | `data-footer-reveal`, `-content` | while the footer fits the window: pinned behind the page (Is Reveal) and uncovered as the page scrolls past, content rising from 30% of its height below into place and fading in (GSAP ScrollTrigger scrub; Is Reveal clips the overshoot); taller footers stay normal; no rise or fade under reduced motion |
+| footer-reveal | `data-footer-reveal`, `-content` | only when the element before the footer covers it (positioned and opaque, as G | Main is; the generated style guide's plain `<main>` keeps a normal footer); while the footer fits the window: pinned behind the page (Is Reveal) and uncovered as the page scrolls past, content rising from 30% of its height below into place and fading in (GSAP ScrollTrigger scrub; Is Reveal clips the overshoot); taller footers stay normal; no rise or fade under reduced motion |
 | form-select | `data-select`, `-native`, `-toggle`, `-value`, `-list`, `-option` | custom select list over a hidden native select; full keyboard |
 | form-datepicker | `data-datepicker` (`-min="today"`), `-input`, `-popover` | month calendar for a read-only field; full keyboard |
 | form-validate | `form[data-validate]` | errors in the site's style; stops Webflow's submit until valid |
@@ -195,7 +210,7 @@ page. Checked at 1440, 820 and 390.
 | disclosure | `data-disclosure` (+ `-open`), `-toggle` (a button with `aria-expanded`, `aria-controls` → the panel) | FAQ answers (all closed at first) and the overview's "Learn more": toggles `.is-closed` on the item (folded content hidden from keyboard and screen readers, repo CSS); opening animates the panel's measured height and the margin the FAQ panel tucks under its question in one motion (420ms ease-out, closing 320ms), the content fading and settling; the question row never changes height. Reduced motion: instant. Ships open, so without JS everything shows |
 | carousel | `data-carousel`, `-track`, `-prev`, `-next` | case studies: buttons step one card (smooth, instant under reduced motion), disabled at the ends with focus handed to the other arrow; swipe and Tab scroll natively (scroll-snap, repo CSS) |
 | before-after | `data-before-after`, `-clip`, `-handle` | sets `--before-after` from pointer drag anywhere on the photos (vertical page scroll still works on touch); the handle becomes a slider (arrows, Page Up/Down, Home, End); rests at 50% without JS |
-| logo marquee (CSS only) | — | Logo Marquee Track: `@keyframes` −50% over 60 s, paused on hover, off under reduced motion; the list twice, the copy `aria-hidden` |
+| logo-marquee | `data-logo-marquee`, `-track` | (review) the logos drift left at rest (2.75em/s), turn right while the page scrolls up and back left on scroll down (eased turn), run faster with scroll speed and the wheel's first notch, then coast back to rest over about a second (inertia); GSAP ticker, em-based speeds, hover slows to a stop, not moved off screen, still under reduced motion. Without it the CSS loop runs (`@keyframes` −50% over 60 s; `.is-driven` turns it off). The list twice, the copy `aria-hidden` |
 | (prototype only) webflow-tabs | Webflow Tabs markup | stand-in for webflow.js Tabs: roles, roving tabindex, arrow keys, the 300ms pane fade |
 | (prototype only) style-guide-states | Sg State classes | shows hover and focus states on the style guide |
 
@@ -277,12 +292,22 @@ page. Checked at 1440, 820 and 390.
   closed at first (review); "Learn more" in the overview opens more text (chevron down in
   Figma, like the live site's expander); below 767 the hero overlay is
   stronger so the copy stays readable over the photo.
+- 2026-10-29 · The whole 2026 site is built in the prototype first; no 2026 work goes into Webflow until every page is done locally (user). The live-site migration (W1–W5) is separate and unaffected.
+- 2026-10-30 · Exception (user): the 2026 **variables** go into this Webflow site now, from `prototype/webflow-snapshot/variables.json` (8 collections, 250 variables; Typography Role gets breakpoint auto-modes). They change nothing on the live pages: no CSS name is shared with the live site's 13 variables, its global styles or the live bundle (checked). This leans the open "where the 2026 system is built" decision towards this site. Not yet in: P2 (approved type changes, `proposed.css`), Layout's breakpoint modes on the Body tag style, the classes. Same day: creating Typography Role's breakpoint auto-modes through the API left three entries on the Body tag style (Tablet, Mobile L, Mobile) that neither the API nor the Designer can change or remove (GOTCHAS 2026-10-30). The user then deleted Typography Role and Typography Styles; the Body entries remain, orphaned. Both rebuilt the same day from the snapshot (100 + 5 variables, Styles' 95 mode values, read back with 0 mismatches), with **no breakpoint links**: Typography Role's Tablet/Mobile Landscape/Mobile modes are manual, like Layout's, until Webflow support clears Body; then link them in the Designer, never through the API.
+- 2026-10-29 · Homepage review (user): **P1** headings navy, **P2**
+  smaller type below 991 (values in `proposed.css`) and **P3** hero bottom
+  padding 80 approved. "Learn more" in the overview stays as built (opens
+  a second paragraph; its text is still a stand-in). Eyebrow chips and
+  small type keep the system values (Chip 13 medium, overview stats
+  14/11 px, services card radius 16): **for the designer**, Figma's light
+  eyebrows (Caption 13 regular), stats (13.7/9.4) and services card radius
+  (20.6) follow the system. Blog at tablet (768–991) shows two posts.
 
 ## Open decisions
 
 | Item | Now | Options |
 | --- | --- | --- |
-| Where the 2026 system is built in Webflow | after the homepage is done | most likely the existing site, new classes with a distinguishing prefix, shell/nav/footer first |
+| Where the 2026 system is built in Webflow | decided once the whole site is prototyped locally (user, 2026-10-29) | a new Webflow site (recommended: the template's site-wide tag styles, body type modes and scaling would restyle the 279 live pages, and a live-site publish is site-wide; CMS, domain and integrations move at launch), or the existing site with prefixed classes and the site-wide styles switched on launch day. Only 8 prototype class names exist on the live site (Section, S Wrapper, Button, Icon, D6, Nav Drop Link, Is Active, Icon Color) |
 | Tablet and mobile designs | none in Figma | designer adds frames; until then type and layout keep the starter's smaller-breakpoint values |
 | H1 style | Figma has none; H1 = Display (60) | designer picks an H1 style |
 | Which pages 01 · Service Page is for | unknown | the 17 `/services/*` pages, `/offers`, or both |
@@ -297,13 +322,9 @@ page. Checked at 1440, 820 and 390.
 | Nav and footer details off by a hair | Figma nav button padding 25.7 (system 24); link text #F1F6F9 and bar line 12% (built: white, 16% like the footer dividers); caret circle 6% (built: 8%) | accept, or make Figma match the system |
 | Fluid scaling frame | template default 1680 (1440–1680); design frame is 1440 | set ideal 1440 and the range |
 | Case studies | new: template, listing, three section options | CMS fields and which option |
-| Homepage: P1–P3 (`proposed.css`) | headings navy; smaller heading sizes below 991; hero lined up with the nav | approve, or the designer gives tablet and mobile type |
 | Homepage: services panes 2–4 | Figma shows Office Furniture only; the other three use the live service pages' titles and descriptions, intros written as stand-ins, photos reused | designer and client supply copy and photos |
-| Homepage: "Learn more" in the overview | opens a second paragraph (stand-in, from the live hero copy) | confirm it expands, and the text; or make it a link to About Us |
 | Homepage: case-study cards | Figma's SNC-Lavalin stand-in four times; arrows need more than three to move on desktop | real case studies (collection) |
-| Homepage: eyebrow chips and small type | built with the system's Chip (13 medium); Figma's light eyebrows use Caption (13 regular). Overview stats 14 / 11 px (Figma 13.7 / 9.4); services card radius 16 (Figma 20.6, the frame looks scaled) | accept the system values, or Figma follows |
 | Homepage: FAQ 9 | "Which locations do you serve?" has no answer in Figma or on the live site; a stand-in is built from the locations list | client confirms |
-| Homepage: blog at 820 | three posts in two columns leave one alone on the last row | accept, or show two posts on tablet |
 
 ## Stand-in assets and placeholders
 
