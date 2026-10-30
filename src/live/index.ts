@@ -5,6 +5,7 @@
 // src/modules/legacy/ are deleted. Keep this file a manifest, like that one.
 import { initEnvironmentSwitcher } from '../modules/environment-switcher';
 import { initFinsweet } from '../modules/finsweet';
+import { initNav } from '../modules/nav';
 import { initAccordions } from '../modules/legacy/accordion';
 import { initBeforeAfter } from '../modules/legacy/before-after';
 import { initExpand } from '../modules/legacy/expand';
@@ -54,6 +55,8 @@ function boot() {
   run('before-after', initBeforeAfter);
   // W4 nav (+ legacy-ix-nav.css).
   run('legacy-nav', initLegacyNav);
+  // The 2026 nav, on the /design pages only ([data-nav]; HANDOFF 2026-10-30).
+  run('nav', () => { initNav(); });
   // W5: Finsweet Attributes v2 List on /blog (search, sort, load more;
   // C15), bundled instead of the three CDN tags in the page head. Last, so
   // attributes set by the modules above are seen.

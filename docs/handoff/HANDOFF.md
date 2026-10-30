@@ -30,6 +30,8 @@ then (see Open decisions). Nothing from the live site is ported: its copy in
 `live-copy/` and the inventory in [CODE-MIGRATION.md](CODE-MIGRATION.md) are
 reference only.
 
+2026-10-30 — The 2026 nav is in Webflow (staging): components N26 | Nav W, C | Mega Services, C | Mega Areas, C | Mega Resources on `/design/mega-menus` (noindex), 84 classes from the snapshot, CMS lists sourced (Sub-Services ×4, Service Areas, Blogs limit 2) with their filters, sort and bindings as Designer steps (MANUAL-TODO B–E). Checked against the prototype at 1440/820/390 (closed, each menu open, the menu below 1280 and a view sliding in): same geometry. The nav module reaches webflow.io once the repo change is pushed. The style guide at `/design/style-guide` is not rebuilt yet.
+
 ## Ground rules for this project
 
 - **No writes to Webflow during planning** — no styles, pages, CMS, custom code, site settings or publishes, staging included. Reading through the MCP is fine. Writes start only when the user says so in chat, and the staging password and noindex are not to be set.
@@ -302,6 +304,8 @@ page. Checked at 1440, 820 and 390.
   14/11 px, services card radius 16): **for the designer**, Figma's light
   eyebrows (Caption 13 regular), stats (13.7/9.4) and services card radius
   (20.6) follow the system. Blog at tablet (768–991) shows two posts.
+
+- 2026-10-30 · The 2026 nav goes into this Webflow site now, sandboxed (user: "This site, prefixed"; a new site was recommended). Only on `/design/*` pages, never on live pages. Class names that already exist on the live site get an `N26 | ` prefix (G | Nav W → N26 | Nav W, Button, Icon, Nav Drop Link; later Section, S Wrapper, D6, Icon Color as they are needed), renamed back at launch; the other 2026 classes keep their names. No 2026 tag styles (they would restyle all live pages): the design pages' content sits in a wrapper with N26 | Body (2026 body type and colours; 16px, as the prototype renders). The nav module and its repo CSS ship in the live bundle (`src/modules/nav.ts`, `nav.css`, `src/live/design-pages.css`), inert without `[data-nav]`. Component variants are combos for now (Icon · 12/14/20 → N26 | Icon Is Size 12/14/20; Button Color · Light → Is Light; Button Size · Icon Lead → Is Icon Lead). Icons come from the live bundle's Phosphor (regular, bold, fill); no CDN, no icon Embed. "Body Fuild" (`.body-fuild`, on 36 live pages: font-size 1em of the fluid root, line-height 1.56em, colour black) stays: deleting it changes those pages. The `/design/*` pages reach the live domain with the next live publish (noindex).
 
 ## Open decisions
 

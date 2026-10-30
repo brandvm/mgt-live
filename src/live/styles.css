@@ -25,6 +25,9 @@
 @import "../modules/legacy/legacy-ix-hover.css";
 @import "../modules/legacy/legacy-ix-scroll.css";
 @import "../modules/legacy/legacy-ix-nav.css";
+/* The 2026 nav and scaling on the /design pages only (N26 classes). */
+@import "../modules/nav.css";
+@import "./design-pages.css";
 
 /* repo-css: js-state — the head bootstrap in loader.html adds .is-loading
    before first paint and src/live/index.ts removes it (as src/styles.css

@@ -190,3 +190,48 @@ collected from client repos into those files.
 - Fix: hidden text (class Blog Card // Sort Date, display none) bound through the API; no manual step. Check the published HTML for the format before relying on it. Also: the first `query_elements` of the session returned "MPS returned 410: Gone"; the same call worked right after a `designer_tool` call.
 - Status: fixed (W5, release 1.2.0 staging)
 - Found by: claude
+
+### 2026-10-30 · Collection Lists inside a component: source and limit only
+- Area: mcp
+- Scope: template-candidate
+- Symptom: building the nav's mega menus (components holding Collection Lists), every CMS field binding inside the component definition answered "Element is not inside a CMS context"; `get_bindable_sources` for a Link inside the list's item returned nothing; switching a list to curated items took (`queryMode` must be sent with `static_text`, not `static_json`), but the `curatedItemIds` write then failed with "[Conflict] The operation could not be applied to the component map" and read back empty.
+- Cause: the API has no CMS context inside component definitions (lessons/mcp.md 2026-10-14 has the filter half of this).
+- Fix: build the list in the definition with `data_element_builder` (`CMSCollection`, `scope_component_id`), set `source` and `limit` (each its own call), style the list and item, move the template card into the item; filters, sort, curated items and every field binding are Designer steps (MANUAL-TODO B–D). After a refused curated write, `queryMode` back to `dynamic` still worked.
+- Status: open (Designer steps B–D)
+- Found by: claude
+
+### 2026-10-30 · The style API rejects -webkit-box-orient and drops -webkit-line-clamp
+- Area: mcp
+- Scope: template-candidate
+- Symptom: `create_style` for Nav Post Title / Excerpt failed ("Invalid style property -webkit-box-orient"); without it the class was created but `-webkit-line-clamp: 2` was silently missing from the result.
+- Cause: the style API only knows the Designer's properties; line clamp isn't one.
+- Fix: the classes hold `display: -webkit-box` and `overflow: hidden`; the clamp and orient are repo CSS (`src/modules/nav.css`, `repo-css: designer-cant`).
+- Status: fixed (repo CSS)
+- Found by: claude
+
+### 2026-10-30 · The Body element takes no class through the API; image width/height attributes are refused
+- Area: mcp
+- Scope: template-candidate
+- Symptom: `set_style` on a page's Body answered "This element doesn't support styles"; `set_attributes` with `width`/`height` on an Image failed ("An internal error occurred") while `data-*` and `loading` worked. Imported images also publish `loading="lazy"`, so the fixed nav's logo rendered 0px high until it loaded.
+- Cause: API limits; Webflow's default image loading is lazy.
+- Fix: the design pages' 2026 base class (N26 | Body) sits on a wrapper div; logos sized by their class and set to `loading="eager"` through `set_attributes`.
+- Status: worked around
+- Found by: claude
+
+### 2026-10-30 · A staging page can't load a localhost bundle; port 3000 shared across projects
+- Area: loader
+- Scope: template-candidate
+- Symptom: checking unpushed code on webflow.io: the dev flag (`?wfc-dev=1`) loads `http://localhost:3000`, which another project's `pnpm dev` was holding; injecting a local stylesheet and script into the https staging page loaded nothing (fetch "Failed to fetch", the module never ran): Chrome's local network access blocks a public page from reading localhost. The app's preview servers also can't read `~/Documents` (macOS privacy), so a server pointed at the repo's `dist/` died with "getcwd: Operation not permitted".
+- Cause: one fixed dev port for every template project; browser local-network protection; sandboxed preview processes.
+- Fix: copy `dist/` and a static build of the prototype (`vite build --base /proto/`) to the scratchpad, save the published staging HTML there with the loader's staging URL rewritten to the local server, and serve it all from one local origin; compare there. Template: let the dev port be set per project.
+- Status: open (template)
+- Found by: claude
+
+### 2026-10-30 · The prototype renders at a fixed 16px; the template's fluid scale gives 13.71px at 1440
+- Area: css
+- Scope: project
+- Symptom: the nav in Webflow measured 73px high at 1440 against the prototype's 85px (every size × 0.857).
+- Cause: the prototype has no fluid scaling (body 16px at every width); `src/styles.css` §01 scales the body from a 1680 frame (1440 → 13.71px), and the live site's global styles scale `:root` the same way. The fluid frame for 2026 is still an open decision (HANDOFF).
+- Fix: on the design pages the N26 | Body wrapper is pinned to 16px (`src/live/design-pages.css`); geometry then matched the prototype at 1440/820/390. Settle §01 (ideal 1440, or no scaling) before the 2026 bundle ships.
+- Status: open (decision)
+- Found by: claude

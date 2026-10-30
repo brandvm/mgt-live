@@ -1,0 +1,25 @@
+/* The 2026 nav module's state rules (src/modules/nav.ts). Imported by the
+   live bundle for the /design pages (HANDOFF 2026-10-30), and by
+   src/styles.css once the 2026 site launches. G | Nav W is named
+   N26 | Nav W in Webflow until then (its class name collides with the live
+   shell's), so the selector is .n26-nav-w; rename both at launch. */
+
+/* repo-css: js-state — html.is-nav-open, set by the nav module while the
+   menu panel is open below 1280px: the page under it can't scroll. */
+html.is-nav-open { overflow: hidden; }
+
+/* repo-css: js-state — .is-instant, set by the nav module for the one frame
+   the whole menu opens or closes below 1280px: the bar's colour, the panel
+   and the open view switch together instead of one transition after another. */
+.n26-nav-w.is-instant,
+.n26-nav-w.is-instant * { transition: none !important; }
+
+/* repo-css: designer-cant — -webkit-line-clamp / -webkit-box-orient (the
+   style API rejects or drops both). Resources' post titles and excerpts are
+   cut to two lines; the classes hold display -webkit-box and overflow
+   hidden. */
+.nav-post-title,
+.nav-post-excerpt {
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

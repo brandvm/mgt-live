@@ -1,0 +1,11 @@
+/* repo-css: approved-base — the 2026 type base for the /design pages built
+   in the live site (HANDOFF 2026-10-30): their content sits in a wrapper
+   with N26 | Body. The live :root scaling (global-styles.css) stays as it
+   is; this pins the wrapper to 16px, as the approved prototype renders at
+   every width (it has no fluid scaling; the fluid frame for 2026 is an open
+   decision, HANDOFF › Open decisions), so the 2026 em variables size as in
+   the prototype. Deleted with src/live/ at launch, when src/styles.css §01
+   applies everywhere. */
+.n26-body {
+  font-size: 16px;
+}
