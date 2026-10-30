@@ -31,6 +31,7 @@ const mobile = window.matchMedia('(max-width: 1279px)');
 const hover = window.matchMedia('(hover: hover) and (pointer: fine)');
 const HIDE_AFTER = 2; // bar heights scrolled before it may hide
 const TOLERANCE = 8; // px in one direction before it hides or shows
+const HOVER_CLICK = 500; // ms after a hover-open in which a click keeps the menu open
 
 export function initNav(lenis?: Lenis | null) {
   const nav = document.querySelector<HTMLElement>('[data-nav]');
@@ -196,10 +197,18 @@ export function initNav(lenis?: Lenis | null) {
   panel.addEventListener('mouseenter', () => clearTimeout(aimTimer));
 
   let timer = 0;
+  // A mouse opens a menu on hover, so the click that usually follows must not
+  // toggle it shut again: a click within HOVER_CLICK ms of a hover-open keeps it.
+  let hoverOpened = { key: '', at: 0 };
+  const showOnHover = (key: string) => {
+    if (active !== key) hoverOpened = { key, at: performance.now() };
+    show(key);
+  };
   toggles.forEach((t) => {
     const key = t.dataset.navDropToggle!;
     t.addEventListener('click', () => {
-      show(active === key ? null : key);
+      const justHovered = hoverOpened.key === key && performance.now() - hoverOpened.at < HOVER_CLICK;
+      show(active === key && !justHovered ? null : key);
       // On phones the view slides in over the menu: focus its Back button once it shows.
       if (mobile.matches && active) focusWhenShown(viewOf(key)?.querySelector<HTMLElement>('[data-nav-back]'));
     });
@@ -212,12 +221,12 @@ export function initNav(lenis?: Lenis | null) {
     t.addEventListener('mouseenter', (e) => {
       if (mobile.matches || !hover.matches) return;
       clearTimeout(timer);
-      intend(e, t, () => show(key));
+      intend(e, t, () => showOnHover(key));
     });
     // Resting or turning sideways on a button the pointer only crossed.
     t.addEventListener('mousemove', (e) => {
       if (mobile.matches || !hover.matches || active === key) return;
-      intend(e, t, () => show(key));
+      intend(e, t, () => showOnHover(key));
     });
   });
   // Leaving the bar and the panel closes the menu (desktop, mouse). The
