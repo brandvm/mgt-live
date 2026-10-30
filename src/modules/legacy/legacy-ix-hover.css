@@ -1,0 +1,62 @@
+/* Legacy IX2 parity CSS, hovers (X2, X4; batch W2). Imported by
+   src/live/styles.css only from the batch that removes these IX2
+   interactions in Webflow: while IX2 still runs, leave it out.
+   Keyed on html.w-mod-js like the other legacy-ix files: IX2 only set its
+   start states with JS running. Values are IX2's own: the first group of
+   a-2 / a-6 (useFirstGroupAsInitialState) is the rest state, the second the
+   hover; a-3 / a-7 return to rest with the same duration and easing, so one
+   transition per element covers both directions. */
+
+/* repo-css: designer-cant — services card hover, IX2 a-2 / a-3: the
+   image inside `.services-list-card` scales 1 → 1.05, 240ms ease-in. The
+   Designer can't style a child on its parent's hover */
+html.w-mod-js .services-list-card .services-card-image {
+  transform: scale3d(1, 1, 1);
+  transition: transform 240ms ease-in;
+}
+
+html.w-mod-js .services-list-card:hover .services-card-image {
+  transform: scale3d(1.05, 1.05, 1);
+}
+
+/* repo-css: designer-cant — service area link hover, IX2 a-6 / a-7: the
+   link fills navy, its title and plus lines turn white, the icon box tints
+   white 6% and turns 90°; 240ms ease both ways. Rest values are IX2's start
+   state, which it set on every link, current page's included */
+html.w-mod-js .service-area-link {
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 240ms ease;
+}
+
+html.w-mod-js .service-area-link .service-area-title {
+  color: rgb(0, 46, 117);
+  transition: color 240ms ease;
+}
+
+html.w-mod-js .service-area-link .service-area-icon-w {
+  background-color: rgba(0, 46, 117, 0.04);
+  transform: rotate(0deg);
+  transition: background-color 240ms ease, transform 240ms ease;
+}
+
+html.w-mod-js .service-area-link .service-area-plus-line {
+  background-color: rgb(0, 46, 117);
+  transition: background-color 240ms ease;
+}
+
+html.w-mod-js .service-area-link:hover {
+  background-color: rgb(0, 46, 117);
+}
+
+html.w-mod-js .service-area-link:hover .service-area-title {
+  color: rgb(255, 255, 255);
+}
+
+html.w-mod-js .service-area-link:hover .service-area-icon-w {
+  background-color: rgba(255, 255, 255, 0.06);
+  transform: rotate(90deg);
+}
+
+html.w-mod-js .service-area-link:hover .service-area-plus-line {
+  background-color: rgb(255, 255, 255);
+}

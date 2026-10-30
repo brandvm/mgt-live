@@ -4,12 +4,19 @@
 // its launch the loader switches BUNDLE and this folder and
 // src/modules/legacy/ are deleted. Keep this file a manifest, like that one.
 import { initEnvironmentSwitcher } from '../modules/environment-switcher';
+import { initAccordions } from '../modules/legacy/accordion';
+import { initBeforeAfter } from '../modules/legacy/before-after';
+import { initExpand } from '../modules/legacy/expand';
 import { initGclid } from '../modules/legacy/gclid';
 import { initHeroSlideshow } from '../modules/legacy/hero-slideshow';
 import { initHubspotForm } from '../modules/legacy/hubspot-form';
+import { initLegacyNav } from '../modules/legacy/legacy-nav';
+import { initLogoMarquee } from '../modules/legacy/logo-marquee';
 import { initReveal } from '../modules/legacy/reveal';
 import { initServiceMap } from '../modules/legacy/service-map';
 import { initSwiper } from '../modules/legacy/swiper';
+import { initTitleReveal } from '../modules/legacy/title-reveal';
+import { initVideoPlayer } from '../modules/legacy/video-player';
 
 // Each module runs in isolation: one that throws is logged and skipped,
 // and every module after it still initializes.
@@ -33,15 +40,19 @@ function boot() {
   run('hubspot-form', initHubspotForm);
   run('swiper', initSwiper);
   run('service-map', initServiceMap);
-  // Interactions: each group goes in with the Webflow batch that deletes
-  // its IX2/IX3 interactions, never before (both would animate). Not even
-  // imported until then: gsap.ts has load-time side effects. Per batch, add
-  // the imports, these run() lines and the CSS import in styles.css:
-  //   W2 click (legacy-ix-accordions.css): accordion.ts initAccordions,
-  //      expand.ts initExpand, video-player.ts initVideoPlayer (IX2 a-19)
-  //   W3 scroll (legacy-ix-scroll.css): title-reveal.ts initTitleReveal,
-  //      logo-marquee.ts initLogoMarquee, before-after.ts initBeforeAfter
-  //   W4 nav (legacy-ix-nav.css): legacy-nav.ts initLegacyNav
+  // Interactions: each group ships with the Webflow batch that deletes its
+  // IX2/IX3 interactions (both would animate otherwise), and reaches live
+  // only through a RELEASE published together with that deletion.
+  // W2 click (+ legacy-ix-accordions.css, legacy-ix-hover.css).
+  run('accordions', initAccordions);
+  run('expand', initExpand);
+  run('video-player', initVideoPlayer);
+  // W3 scroll (+ legacy-ix-scroll.css).
+  run('title-reveal', initTitleReveal);
+  run('logo-marquee', initLogoMarquee);
+  run('before-after', initBeforeAfter);
+  // W4 nav (+ legacy-ix-nav.css).
+  run('legacy-nav', initLegacyNav);
 }
 
 if (document.readyState === 'loading') {

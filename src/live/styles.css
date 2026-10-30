@@ -19,6 +19,12 @@
 @import "./global-styles.css";
 @import "../modules/legacy/legacy-a.css";
 @import "../modules/legacy/legacy-b.css";
+/* Interactions, batches W2–W4: imported together with the run() lines in
+   src/live/index.ts, once their IX2/IX3 interactions are deleted. */
+@import "../modules/legacy/legacy-ix-accordions.css";
+@import "../modules/legacy/legacy-ix-hover.css";
+@import "../modules/legacy/legacy-ix-scroll.css";
+@import "../modules/legacy/legacy-ix-nav.css";
 
 /* repo-css: js-state — the head bootstrap in loader.html adds .is-loading
    before first paint and src/live/index.ts removes it (as src/styles.css
