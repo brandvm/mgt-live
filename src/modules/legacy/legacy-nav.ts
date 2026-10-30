@@ -21,9 +21,10 @@
 // one of its breakpoints; here only leaving ≤ 991 closes the X7 menu (IX2
 // also closed it at 767 and 479, e.g. on rotating a phone).
 // Added, not in IX2: aria-expanded on the openers.
-import { animateHeight, EASE, holdDisplay, onDropdownToggle } from './ix-shared';
+import { animateHeight, EASE, fadeIn, holdDisplay, onDropdownToggle } from './ix-shared';
 
 const DROP = { duration: 740, delay: 0, easing: EASE.nav };
+const DROP_FADE = { duration: 740, delay: 240, easing: EASE.nav };
 
 function initDropdowns() {
   document.querySelectorAll<HTMLElement>('.navbar-drop.w-dropdown').forEach((drop) => {
@@ -34,6 +35,7 @@ function initDropdowns() {
       if (open) {
         display.open();
         animateHeight(list, true, DROP);
+        fadeIn(list.querySelectorAll<HTMLElement>('.s-wrapper.sw-nav-drop-content'), DROP_FADE);
       } else {
         display.close(DROP.duration);
         animateHeight(list, false, DROP);

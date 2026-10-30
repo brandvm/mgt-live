@@ -54,6 +54,24 @@ export function animateHeight(el: HTMLElement, open: boolean, t: Timing) {
   anim.oncancel = clear;
 }
 
+// The opening fade of content inside a list that was display:none while
+// closed. A CSS transition can't start from display:none (the element had no
+// computed style to transition from), so the open rules in the legacy-ix CSS
+// would jump to opacity 1; IX2 animated it. The settled value stays in CSS;
+// `fill: backwards` holds opacity 0 through the delay. Closing fades still
+// run as CSS transitions, as the list stays displayed until they end.
+export function fadeIn(els: Iterable<HTMLElement>, t: Timing) {
+  for (const el of els) {
+    if (typeof el.animate !== 'function') continue;
+    el.animate([{ opacity: 0 }, { opacity: 1 }], {
+      duration: t.duration,
+      delay: t.delay,
+      easing: t.easing,
+      fill: 'backwards',
+    });
+  }
+}
+
 // Calls back when webflow.js adds or removes `w--open` on a Dropdown List.
 // Webflow's Dropdown stays in charge of opening and closing (click, keyboard,
 // aria-expanded, closing the others and closing on an outside click); IX2's

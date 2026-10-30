@@ -18,7 +18,7 @@
 // when closed, keeping them displayed until the close group ends.
 //
 // Markup: `.<prefix>-accordion.w-dropdown` > `.<prefix>-accordion-list`.
-import { animateHeight, EASE, holdDisplay, onDropdownToggle, Timing } from './ix-shared';
+import { animateHeight, EASE, fadeIn, holdDisplay, onDropdownToggle, Timing } from './ix-shared';
 
 export type AccordionPrefix = 'faqs' | 'serwhy' | 'serintro' | 'service';
 
@@ -28,6 +28,9 @@ interface AccordionSpec {
   // ms after closing starts when IX2 sets the list to display:none (the end
   // of the close group); undefined: the list is never hidden (FAQ).
   hideAfter?: number;
+  // The content's opening fade, for the lists hidden while closed (see
+  // fadeIn in ix-shared.ts); its closing fade is in the CSS.
+  fade?: [selector: string, timing: Timing];
 }
 
 export const ACCORDIONS: Record<AccordionPrefix, AccordionSpec> = {
@@ -41,18 +44,21 @@ export const ACCORDIONS: Record<AccordionPrefix, AccordionSpec> = {
     open: { duration: 240, delay: 0, easing: EASE.inOutQuad },
     close: { duration: 400, delay: 0, easing: EASE.inOutQuad },
     hideAfter: 500,
+    fade: ['.serwhy-accordion-content-w', { duration: 400, delay: 0, easing: EASE.inOutQuad }],
   },
   // a-30: 240ms inOutQuad. a-31: 400ms inOutQuad → display none at 400.
   serintro: {
     open: { duration: 240, delay: 0, easing: EASE.inOutQuad },
     close: { duration: 400, delay: 0, easing: EASE.inOutQuad },
     hideAfter: 400,
+    fade: ['.serintro-accordion-content', { duration: 400, delay: 0, easing: EASE.inOutQuad }],
   },
   // a-32: 320ms inOutQuad. a-33: 400ms inOutQuad → display none at 400.
   service: {
     open: { duration: 320, delay: 0, easing: EASE.inOutQuad },
     close: { duration: 400, delay: 0, easing: EASE.inOutQuad },
     hideAfter: 400,
+    fade: ['.service-accordion-content-w', { duration: 400, delay: 0, easing: EASE.inOutQuad }],
   },
 };
 
@@ -69,6 +75,7 @@ export function initAccordion(prefix: AccordionPrefix) {
       if (open) {
         if (display) display.open();
         animateHeight(list, true, spec.open);
+        if (spec.fade) fadeIn(list.querySelectorAll<HTMLElement>(spec.fade[0]), spec.fade[1]);
       } else {
         if (display && spec.hideAfter !== undefined) display.close(spec.hideAfter);
         animateHeight(list, false, spec.close);
