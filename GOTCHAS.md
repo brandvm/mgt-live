@@ -172,3 +172,12 @@ collected from client repos into those files.
 - Fix: Page Wrapper rebuilt inside the three slots, the extra footers removed, Get a Quote restored to live's structure (Page Content, `section#Hero-Section.s-page-hero`, live section order). Check every page against live (section order, positions, nav box, footer count and text) at 1440/820/390 before any publish to live.
 - Status: fixed (staging 2026-10-30 17:57)
 - Found by: claude
+
+### 2026-10-30 · A CSS fade on content inside a Webflow Dropdown List never plays on open
+- Area: js
+- Scope: template-candidate
+- Symptom: porting IX2 dropdown/accordion animations to CSS transitions keyed on `.w--open`, the nav dropdown's content (and the SerWhy/SerIntro/Service accordion content) jumped to opacity 1 on open; live (IX2) faded it in over 740 ms after 240 ms.
+- Cause: `.w-dropdown-list` is `display: none` until `w--open`; a transition can't start from display:none (no computed style to start from), so the open rule applies instantly. Closing works: the list stays displayed until the close fades end. The FAQ list (display flex, height 0) was fine.
+- Fix: `fadeIn()` in `src/modules/legacy/ix-shared.ts` plays the opening fade with Web Animations (`fill: backwards` through the delay); the settled values stay in CSS. `@starting-style` would also do it, but not in older Safari/Firefox.
+- Status: fixed 9fa1c5e (release 1.1.0)
+- Found by: claude
