@@ -181,3 +181,12 @@ collected from client repos into those files.
 - Fix: `fadeIn()` in `src/modules/legacy/ix-shared.ts` plays the opening fade with Web Animations (`fill: backwards` through the delay); the settled values stay in CSS. `@starting-style` would also do it, but not in older Safari/Firefox.
 - Status: fixed 9fa1c5e (release 1.1.0)
 - Found by: claude
+
+### 2026-10-30 · A CMS date can be bound through the MCP, and its default format has the year
+- Area: mcp
+- Scope: template-candidate
+- Symptom: Finsweet v2 sorting on /blog needed a full date per card; the visible date is "Aug 25" (no year), so v1 cmssort sorted by month and day. The plan was a Designer step to bind a hidden text to Blog Date with format "MMMM D, YYYY", on the belief that the API can't bind or format dates.
+- Cause: `data_element_settings_tool` › `set_settings` with key `text` and a `cms` binding (collection + field id from `get_bindable_sources`) binds a date field to a new text block; the API can't choose the format, but the default it publishes is "MMMM D, YYYY" ("August 25, 2026"), which `fs-list-fieldtype="date"` parses.
+- Fix: hidden text (class Blog Card // Sort Date, display none) bound through the API; no manual step. Check the published HTML for the format before relying on it. Also: the first `query_elements` of the session returned "MPS returned 410: Gone"; the same call worked right after a `designer_tool` call.
+- Status: fixed (W5, release 1.2.0 staging)
+- Found by: claude
