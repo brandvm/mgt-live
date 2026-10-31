@@ -235,3 +235,12 @@ collected from client repos into those files.
 - Fix: on the design pages the N26 | Body wrapper is pinned to 16px (`src/live/design-pages.css`); geometry then matched the prototype at 1440/820/390. Settle §01 (ideal 1440, or no scaling) before the 2026 bundle ships.
 - Status: open (decision)
 - Found by: claude
+
+### 2026-10-30 · A Link Block built with a page link published as href="#"
+- Area: mcp
+- Scope: template-candidate
+- Symptom: four Link Blocks created inside a component definition with `data_element_builder` and `set_link` (link_type page) published with `href="#"`; the builder reported success.
+- Cause: unknown; the builder's `set_link` didn't store the page link (inside a component definition at least).
+- Fix: set the link afterwards with `data_element_tool` › `set_link` (linkType page) and check `return_element_info` shows `link.pageId`; then the published href was right. Always read back a link before publishing.
+- Status: worked around
+- Found by: claude
