@@ -1,5 +1,11 @@
 {
   "version": "0.8.1",
   "created": "2026-10-29",
-  "template": "brandvm/wf-template"
+  "template": "brandvm/wf-template",
+  "bench": {
+    "template": "official",
+    "name": "Bench default",
+    "version": "0.8.1",
+    "base": "0.8.1"
+  }
 }
