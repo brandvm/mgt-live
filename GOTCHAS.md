@@ -244,3 +244,31 @@ collected from client repos into those files.
 - Fix: set the link afterwards with `data_element_tool` › `set_link` (linkType page) and check `return_element_info` shows `link.pageId`; then the published href was right. Always read back a link before publishing.
 - Status: harvested into wf-template 0.15.0; worked around
 - Found by: claude
+
+### 2026-11-03 · The template 0.15.0 update dropped the live bundle from build.mjs
+- Area: ci
+- Scope: template-candidate
+- Symptom: after commit 9db4a8e "Template 0.15.0", `pnpm build` wrote only `dist/index.js` and `dist/styles.css`; `dist/live/` and the Phosphor Bold/Fill and Font Awesome fonts were deleted in that commit. Not pushed: a push would have removed `live/index.js` from the staging bundles that every webflow.io page loads (loader `BUNDLE = "live/"`). Bench's `pnpm dev` served no `live/` either.
+- Cause: the update replaced `build.mjs` with the template's, which has no `src/live/` entries (the project's second entry, GOTCHAS 2026-10-29 "The template's base CSS would restyle the live site").
+- Fix: the two `src/live/` entry points restored in `build.mjs`, with a comment that a template update must keep them; rebuilt `dist/` (same font hashes as before). Template: `update-skills` should merge or flag project changes in `build.mjs` instead of overwriting it, or the template should read extra entries from a project file.
+- Status: fixed (uncommitted, 2026-11-03)
+- Found by: claude
+
+### 2026-11-03 · A HubSpot form embed can't be styled by the site's CSS
+- Area: css
+- Scope: template-candidate
+- Symptom: styling the 2026 contact form (HubSpot, portal 44243593) to the style guide: the live form sits in `iframe.hs-form-iframe` (v2 embed, `isInsideFrame: true`), so neither `styles.css` nor Webflow's variables reach its fields. Also: HubSpot's error list carries the radio list's class (`ul.hs-error-msgs.inputs-list`), so a grid on `.inputs-list` squeezed every error message to half width.
+- Cause: HubSpot renders legacy forms in a same-origin iframe unless the form is set to raw HTML (a paid HubSpot setting); its markup reuses `inputs-list` for both lists.
+- Fix: a self-contained HubSpot block (own `--hs-*` values copied from the variables, selectors under `.hs-form`) to inject into the iframe on form ready, with `css: ''` to drop HubSpot's theme CSS (prototype `repo.css`, HANDOFF Modules › hubspot-form); `.hs-error-msgs { display: block }`. Checking it in the app's preview: computed border colours read stale because transitions don't advance in a background tab; read them with `transition: none`.
+- Also: `css: ''` in `hbspt.forms.create` did not remove HubSpot's theme stylesheet (19.8k, still in the iframe head), and that theme gives every `.hs-input` one fixed height, which clipped the file input; the injected sheet overrides it (`height: auto`).
+- Status: fixed in the repo (hubspot-form.ts, opt-in `data-hubspot-style="2026"`), not pushed yet
+- Found by: claude
+
+### 2026-11-03 · A page duplicated through the API loses its head code; live tag styles reach the 2026 design pages
+- Area: mcp
+- Scope: template-candidate
+- Symptom: `create_page` with `duplicateOf` the Logo Marquee design page copied the elements but not the page's head code (its noindex meta). On the design pages the live site's tag styles also apply to 2026 elements: h1–h6 `margin-bottom: 10px` and bold, h2 `font-variation-settings: "wght" 480` (changes Geist's weight), p `line-height: 175%`.
+- Cause: duplication copies the DOM only; the design pages sit on a site whose tag styles were made for the live design.
+- Fix: copy head code with `set_page_freeform_code` after duplicating and read it back. For headings, the D classes and Faq Heading carry margin 0 and the heading colour (P1) while sandboxed; plain paragraphs still get 175% (2–3 px). At launch the 2026 tag styles replace these.
+- Status: worked around
+- Found by: claude

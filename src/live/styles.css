@@ -25,8 +25,11 @@
 @import "../modules/legacy/legacy-ix-hover.css";
 @import "../modules/legacy/legacy-ix-scroll.css";
 @import "../modules/legacy/legacy-ix-nav.css";
-/* The 2026 nav and scaling on the /design pages only (N26 classes). */
+/* The 2026 nav, logo marquee, FAQs (disclosure) and scaling on the /design pages only (N26
+   and Logo Marquee classes). */
 @import "../modules/nav.css";
+@import "../modules/logo-marquee.css";
+@import "../modules/disclosure.css";
 @import "./design-pages.css";
 
 /* repo-css: js-state — the head bootstrap in loader.html adds .is-loading

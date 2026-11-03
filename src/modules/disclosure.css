@@ -1,0 +1,15 @@
+/* repo-css: js-state — .is-closed, set by the disclosure module on an FAQ
+   item or an Expand while it is shut: its Collapse folds to nothing and its
+   content leaves the tab order. The module animates the change (measured
+   height); without it everything stays open. From the prototype (2026 Faq
+   Grid, HANDOFF › Modules › disclosure). */
+.is-closed > .collapse { grid-template-rows: 0fr; visibility: hidden; }
+/* An open FAQ answer starts 16 under the question (Figma), without the
+   question row changing height: the Collapse tucks into the question's
+   bottom padding. */
+.faq-item > .collapse { margin-top: -1em; }
+.faq-item.is-closed > .collapse { margin-top: 0; }
+/* repo-css: designer-cant — a child styled by its parent's js-state class:
+   while Faq Toggle has Is Open (navy, a Designer combo the module toggles),
+   its vertical line turns flat, so the plus becomes a minus. */
+.faq-toggle.is-open > .faq-toggle-line.is-vertical { transform: translate(-50%, -50%) rotate(0deg); }

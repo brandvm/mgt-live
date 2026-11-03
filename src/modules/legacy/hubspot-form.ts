@@ -5,6 +5,9 @@
 // Markup: <div data-hubspot-portal="44243593"
 //              data-hubspot-form="<form id>"
 //              data-hubspot-region="na1"></div>   (region optional, na1)
+//   data-hubspot-style="2026" (optional)   the 2026 design (/design pages)
+import { HUBSPOT_2026_CSS } from './hubspot-form-2026';
+
 const SCRIPT_SRC = 'https://js.hsforms.net/forms/embed/v2.js';
 
 interface HubSpotForms {
@@ -34,6 +37,18 @@ function loadHubSpot(): Promise<HubSpotForms> {
   return scriptPromise;
 }
 
+// HubSpot renders the form in a same-origin iframe (iframe.hs-form-iframe)
+// or, for a raw HTML form, in the page; the sheet goes where the form is.
+function injectStyles(el: HTMLElement) {
+  const frame = el.querySelector<HTMLIFrameElement>('iframe.hs-form-iframe');
+  const doc = frame?.contentDocument ?? document;
+  if (doc.querySelector('style[data-hubspot-2026]')) return;
+  const style = doc.createElement('style');
+  style.setAttribute('data-hubspot-2026', '');
+  style.textContent = HUBSPOT_2026_CSS;
+  doc.head.appendChild(style);
+}
+
 let uid = 0;
 
 export function initHubspotForm() {
@@ -47,11 +62,16 @@ export function initHubspotForm() {
       targets.forEach((el) => {
         el.dataset.hubspotReady = 'true';
         if (!el.id) el.id = `hubspot-form-${++uid}`;
+        // data-hubspot-style="2026" (the 2026 /design pages): no HubSpot
+        // theme CSS, and the 2026 sheet injected into the form's iframe
+        // once it is ready. Without it the form renders as on live.
+        const is2026 = el.dataset.hubspotStyle === '2026';
         hbspt.forms.create({
           region: el.dataset.hubspotRegion || 'na1',
           portalId: el.dataset.hubspotPortal,
           formId: el.dataset.hubspotForm,
           target: `#${el.id}`,
+          ...(is2026 ? { css: '', onFormReady: () => injectStyles(el) } : {}),
         });
       });
     })

@@ -3,8 +3,10 @@
 // were (CODE-MIGRATION.md). The 2026 redesign's entry is src/index.ts; at
 // its launch the loader switches BUNDLE and this folder and
 // src/modules/legacy/ are deleted. Keep this file a manifest, like that one.
+import { initDisclosure } from '../modules/disclosure';
 import { initEnvironmentSwitcher } from '../modules/environment-switcher';
 import { initFinsweet } from '../modules/finsweet';
+import { initLogoMarquee as initLogoMarquee2026 } from '../modules/logo-marquee';
 import { initNav } from '../modules/nav';
 import { initAccordions } from '../modules/legacy/accordion';
 import { initBeforeAfter } from '../modules/legacy/before-after';
@@ -57,6 +59,12 @@ function boot() {
   run('legacy-nav', initLegacyNav);
   // The 2026 nav, on the /design pages only ([data-nav]; HANDOFF 2026-10-30).
   run('nav', () => { initNav(); });
+  // The 2026 Logo Marquee, on the /design pages only ([data-logo-marquee];
+  // HANDOFF 2026-11-03). Not the live homepage's loop above.
+  run('logo-marquee-2026', () => { initLogoMarquee2026(); });
+  // The 2026 FAQs (disclosure), on the /design pages only ([data-disclosure];
+  // HANDOFF 2026-11-03, Contact Us).
+  run('disclosure', () => { initDisclosure(); });
   // W5: Finsweet Attributes v2 List on /blog (search, sort, load more;
   // C15), bundled instead of the three CDN tags in the page head. Last, so
   // attributes set by the modules above are seen.
