@@ -32,6 +32,9 @@ html, body { margin: 0; background: transparent; }
   /* Room for the 3px focus rings: the iframe's edge clips anything past it.
      The host (Hubspot Form) has a -0.25em margin, so nothing moves. */
   padding: 0.25em;
+  /* HubSpot's theme sets the form to width: 100%; border-box keeps the
+     padding inside it, or the right edge runs past the iframe. */
+  box-sizing: border-box;
   color: var(--hs-ink);
   font-family: var(--hs-font);
   font-size: 1em;
