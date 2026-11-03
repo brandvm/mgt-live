@@ -269,6 +269,7 @@ collected from client repos into those files.
 - Scope: template-candidate
 - Symptom: `create_page` with `duplicateOf` the Logo Marquee design page copied the elements but not the page's head code (its noindex meta). On the design pages the live site's tag styles also apply to 2026 elements: h1–h6 `margin-bottom: 10px` and bold, h2 `font-variation-settings: "wght" 480` (changes Geist's weight), p `line-height: 175%`.
 - Cause: duplication copies the DOM only; the design pages sit on a site whose tag styles were made for the live design.
+- Also: on a page whose content sits in a component slot (G | Page W), a duplicate made for rollback can't be checked through the API (slots read back empty, on the original too); check it in the Designer. And `insert_component_instance` / the element builder refuse `before`/`after` a component instance ("Cannot insert elements directly into a component instance"): append to the Body instead.
 - Fix: copy head code with `set_page_freeform_code` after duplicating and read it back. For headings, the D classes and Faq Heading carry margin 0 and the heading colour (P1) while sandboxed; plain paragraphs still get 175% (2–3 px). At launch the 2026 tag styles replace these.
 - Status: worked around
 - Found by: claude
