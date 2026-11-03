@@ -102,6 +102,9 @@ html, body { margin: 0; background: transparent; }
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 1.5em 1em;
   margin: 0;
+  /* Room for the 3px focus rings: the iframe's edge clips anything past it.
+     The host (Hubspot Form) has a -0.25em margin, so nothing moves. */
+  padding: 0.25em;
   color: var(--hs-ink);
   font-family: var(--hs-font);
   font-size: 1em;
@@ -110,6 +113,11 @@ html, body { margin: 0; background: transparent; }
 .hs-form *,
 .hs-form *::before,
 .hs-form *::after { box-sizing: border-box; }
+/* HubSpot's theme sets Arial through selectors that carry a per-load
+   instance class (.hs-form-<id>_<instance> label\u2026), which can't be
+   targeted; the 2026 font wins with !important, inside this block only. */
+.hs-form,
+.hs-form * { font-family: var(--hs-font) !important; }
 /* Every field full width, but name and company, email and phone in pairs. */
 .hs-form > * { grid-column: 1 / -1; }
 .hs-form > .hs_firstname,
@@ -237,7 +245,21 @@ html, body { margin: 0; background: transparent; }
   cursor: pointer;
   transition: background-color 200ms ease;
 }
-.hs-form .hs-button:hover { background-color: var(--hs-yellow-hover); }
+/* HubSpot's theme restyles the button on hover with a per-load instance
+   selector (.hs-form-<id>_<instance> .hs-button:hover:not(.inactive):
+   orange, white, 12px), which beats .hs-form .hs-button:hover; the 2026
+   button keeps its colours and type in every state with !important. */
+.hs-form .hs-button,
+.hs-form .hs-button:hover,
+.hs-form .hs-button:focus,
+.hs-form .hs-button:active {
+  border: 0 !important;
+  background-color: var(--hs-yellow) !important;
+  color: var(--hs-navy) !important;
+  font-size: 1em !important;
+  line-height: 1.28 !important;
+}
+.hs-form .hs-button:hover { background-color: var(--hs-yellow-hover) !important; }
 .hs-form .hs-button:active { box-shadow: inset 0 0 0 100em rgba(0, 0, 0, 0.16); }
 .hs-form .hs-button:focus-visible { outline: 0.1875em solid var(--hs-focus); outline-offset: 0; }
 
