@@ -5,7 +5,12 @@
   "bench": {
     "template": "official",
     "name": "Bench default",
-    "version": "0.8.1",
-    "base": "0.8.1"
+    "version": "0.15.0",
+    "base": "0.15.0"
+  },
+  "skills": {
+    "version": "local@0.15.0",
+    "commit": "local",
+    "updated": "2026-11-03"
   }
 }

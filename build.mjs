@@ -14,16 +14,7 @@ const stamp = process.argv.includes('--stamp');
 const version = JSON.parse(await readFile(new URL('./package.json', import.meta.url), 'utf8')).version ?? '0.0.0';
 
 const config = {
-  // dist/live/: the current live site's code until the redesign launches
-  // (src/live/, HANDOFF Decisions 2026-10-29); the loader's BUNDLE picks
-  // which folder a page loads. Same file names, so the loader needs no
-  // other change.
-  entryPoints: [
-    'src/index.ts',
-    'src/styles.css',
-    { in: 'src/live/index.ts', out: 'live/index' },
-    { in: 'src/live/styles.css', out: 'live/styles' },
-  ],
+  entryPoints: ['src/index.ts', 'src/styles.css'],
   bundle: true,
   outdir: 'dist',
   // Icon fonts (src/phosphor/) are copied next to the stylesheet, with a
