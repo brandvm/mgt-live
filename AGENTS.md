@@ -11,11 +11,12 @@ Filled in by `pnpm new-project` on 2026-10-29.
 - Client / site: `MGT` (Michaels Global Trading)
 - GitHub: `brandvm/mgt-live` (renamed from `brandvm/wf-mgt` 2026-11-05, to free the name for the from-scratch rebuild), default branch `master`
 - Webflow site ID: `658c5919dffd45bc022c9153`
-- Webflow MCP server: `webflow-wf-mgt` (`.mcp.json`)
+- Webflow MCP server: `webflow-mgt-live` (`.mcp.json`; was `webflow-wf-mgt` until 2026-11-05)
 - Staging site: `https://mgt-live.webflow.io` (was `wf-mgt.webflow.io` until 2026-11-05)
 - Staging bundles: `https://brandvm.github.io/mgt-live/`
 - Production domain: `www.michaelsglobaltrading.com` (live; apex `michaelsglobaltrading.com` also attached)
-- Production release: `1.2.0` (tag `v1.2.0`, live bundle `dist/live/`: W1 code + interactions W2–W4 + Finsweet v2 List on `/blog`, W5/C15), live since 2026-10-30 20:13 UTC (1.1.0 from 19:18, 1.0.0 from 16:10)
+- Production release: head code `RELEASE = "production"` (a tag on 23234dc, the same commit as `v1.2.0`: W1 code + interactions W2–W4 + Finsweet v2 List on `/blog`), loaded from jsDelivr `gh/brandvm/mgt-live@production/dist/live/` since 2026-11-05 17:46 UTC (before that `gh/brandvm/wf-mgt@1.2.0`, live from 2026-10-30 20:13)
+- 2026-11-05: the site is being rebuilt from scratch elsewhere; this repo and Webflow site only keep the current live site running until that launch. The names `wf-mgt` (GitHub, webflow.io, MCP server) are free for the new build
 
 ## Who owns what
 
