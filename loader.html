@@ -1,6 +1,6 @@
 <!-- ============================================================
 Custom-code loading — three pieces, pasted into three different places
-in Webflow (piece 2 is two Embeds, 2a and 2b). ORG and REPO are filled in (brandvm/wf-mgt). The release
+in Webflow (piece 2 is two Embeds, 2a and 2b). ORG and REPO are filled in (brandvm/mgt-live). The release
 version lives in ONE place: RELEASE in piece 1.
 
   prod        = pinned jsDelivr tag (immutable)
@@ -49,7 +49,7 @@ published.
   (function () {
     var RELEASE = null; // the release tag, e.g. "1.0.0" — the only version string
     var OWNER = "brandvm"; // the GitHub org or user that owns this repo
-    var SITE = "wf-mgt"; // this repo's name
+    var SITE = "mgt-live"; // this repo's name
     // Which bundle in dist/ this site loads: "live/" = the current live
     // site's code (src/live/), "" = the 2026 redesign (src/index.ts). Also
     // in 2a's href below. HANDOFF Decisions 2026-10-29.
@@ -185,7 +185,7 @@ published.
 <link
   id="wfc-css"
   rel="stylesheet"
-  href="https://brandvm.github.io/wf-mgt/live/styles.css?v=1"
+  href="https://brandvm.github.io/mgt-live/live/styles.css?v=1"
 />
 
 <!-- ============================================================

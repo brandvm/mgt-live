@@ -9,11 +9,11 @@ source of agent rules — edit this file, never a copy of it.
 Filled in by `pnpm new-project` on 2026-10-29.
 
 - Client / site: `MGT` (Michaels Global Trading)
-- GitHub: `brandvm/wf-mgt`, default branch `master`
+- GitHub: `brandvm/mgt-live` (renamed from `brandvm/wf-mgt` 2026-11-05, to free the name for the from-scratch rebuild), default branch `master`
 - Webflow site ID: `658c5919dffd45bc022c9153`
 - Webflow MCP server: `webflow-wf-mgt` (`.mcp.json`)
-- Staging site: `https://wf-mgt.webflow.io`
-- Staging bundles: `https://brandvm.github.io/wf-mgt/`
+- Staging site: `https://mgt-live.webflow.io` (was `wf-mgt.webflow.io` until 2026-11-05)
+- Staging bundles: `https://brandvm.github.io/mgt-live/`
 - Production domain: `www.michaelsglobaltrading.com` (live; apex `michaelsglobaltrading.com` also attached)
 - Production release: `1.2.0` (tag `v1.2.0`, live bundle `dist/live/`: W1 code + interactions W2–W4 + Finsweet v2 List on `/blog`, W5/C15), live since 2026-10-30 20:13 UTC (1.1.0 from 19:18, 1.0.0 from 16:10)
 
